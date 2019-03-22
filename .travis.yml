@@ -1,7 +1,15 @@
 language: node_js
 node_js:
   - "node"
+script:
+  - echo "Deploying!"
+install:
+  - npm install -g firebase-tools
+after_success:
+  - firebase deploy --token $FIREBASE_TOKEN
 deploy:
   provider: firebase
-  token:
-    secure: UESs37Y9lJb59dyX7Q8jHhwpCJIm7tjgYB6rtEe3rOuNmqs7GPk1ld10QAFVZMDkyI6Tn1HDT119zgdDgJixeNgJq4gYeXAC623F+ts0kNCru6gDZNomqfJQI0pi7GobyY5x+/7B+p7t9bO5wBUExFCBA8zFwWlL4lFvo+SrBQHqHNcIhMAZF1lyYmpumecbxvkGYm7FWahmwxZeorwVMD9bE6m1Lc/jim+mq8BbRo+xihXgpOJ9PTnp62B/3OwFlXF/eTOikN0H3oKpMHJwIr2eTX4tZZ9E32i+271P5bQVG93hOSqH55THWF8GOrieLSLhZFPGy0j0gBKCbDK+oEaTxZtNQr59RRPHRie4VnMAT6vy0H0Y08Gu9/FEOKd6sG6BQw/qPL8eeeEmE3EZwhkla5NNjdFj6ir27Ab1VwO/COBHeYx9ypmWsURc0z/kRGHB8j69B1L6cnz6GWPQunB8xoHD3BMK6UAZ7B4xcQdV6tEIslgC374AXr8okZnyDDWyXV6016S3OztOxZyu/vMpt5U1ed6Q0e61V6BXWIponlpWchlgUwFVgvi8fMWz9A9LOXNB0r726Sjtpyu3jbdQrhOFUJcBUhkUuOZPunYuo0O0xGsofolC12dk6g5hJMqIw1RnMnsmNsmbaTo7VDmEfesEAimo4sC25ObkiZ8=
+    project: "q-bot-test-7d5cb"
+    branches:
+      only:
+        - master
