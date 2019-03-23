@@ -16,7 +16,6 @@ export default class Login extends Component {
   componentDidMount() {
     subscribe(user => {
       if(user) {
-        console.log(user)
         redirect();
       }
     })
