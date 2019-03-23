@@ -1,35 +1,28 @@
 import React, { Component } from 'react';
-import QuestionForm from './components/QuestionForm';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Login from './components/Login';
-import { addQuestion } from './actions/questions';
-import { ConnectQuestions } from './components/Questions';
+import QuestionDatabase from './components/QuestionDatabase';
+import Header from './components/Header';
 import { subscribe } from './services/firebase';
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 class App extends Component {
-
   componentDidMount() {
     subscribe(user => {
       console.log(user)
     })
   }
 
-  // handleSubmit = (name, question, event) => {
-  //   event.preventDefault();
-  //   addQuestion({ name, question })
-  // }
-
   render() {
     return (
+      <>
+        <Header />
         <Router>
           <Switch>
-            <Route path='/' component={Login}></Route>
-            <Route path='/questions' component={ConnectQuestions} />
+            <Route exact path='/' component={Login}></Route>
+            <Route exact path='/questions' component={QuestionDatabase} />
           </Switch>
-          
-          {/* <QuestionForm handleSubmit={this.handleSubmit} />
-          <ConnectQuestions/> */}
         </Router>
+      </>
     );
   }
 }
