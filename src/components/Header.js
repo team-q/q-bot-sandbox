@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import { signOut } from '../services/firebase';
+import { withUser } from './withUser';
 
-
-export default class Header extends PureComponent {
+class Header extends PureComponent {
   handleSignOut = () => {
     console.log('signed out')
     signOut();
@@ -15,3 +15,5 @@ export default class Header extends PureComponent {
     );
   }
 }
+
+export default withUser(Header);
