@@ -1,16 +1,12 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { ConnectQuestions } from './Questions';
 import QuestionForm from './QuestionForm';
 
-export default class QuestionDatabase extends PureComponent {
- 
-  
-  render() {
+export default function QuestionDatabase() {
     return (
       <>
-        <QuestionForm handleSubmit={this.handleSubmit}/>
+        <QuestionForm />
         <ConnectQuestions />
       </>
     )
-  }
 }
