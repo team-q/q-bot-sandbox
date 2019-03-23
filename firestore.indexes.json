@@ -1,10 +1,4 @@
 {
-  "indexes": [
-    {
-      "collectionId": "channel",
-      "fields": [
-        { "fieldPath": "name", "mode": "ASCENDING" }
-      ]
-    }
-  ]
+  "indexes": [],
+  "fieldOverrides": []
 }
