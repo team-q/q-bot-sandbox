@@ -1,6 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth'
+import React from 'react'
+import { Redirect, BrowserRouter as Router } from 'react-router-dom';
 
 firebase.initializeApp({
   apiKey: 'AIzaSyAM_SACKWLecd92TF3n5uUvDclmOLHOTQA',
@@ -25,11 +27,15 @@ export const subscribe = (fn, provider) => firebase.auth().onAuthStateChanged(us
     fn(user)
   }
   else if (provider === 'google') {
-    firebase.auth().signInWithRedirect(googleProvider)
-  }
+   firebase.auth().signInWithRedirect(googleProvider)
+}
   else if (provider === 'github') {
     firebase.auth().signInWithRedirect(githubProvider)
   }
+})
+
+export const nextThing = firebase.auth().getRedirectResult().then(result => {
+  console.log('RESULT', result)
 })
 
 export const signOut = () => firebase.auth().signOut();

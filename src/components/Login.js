@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { subscribe, signOut } from '../services/firebase';
+import { subscribe, signOut, nextThing } from '../services/firebase';
 
 export default class Login extends Component {
   state = {
@@ -9,7 +9,7 @@ export default class Login extends Component {
   componentDidUpdate() {
     subscribe(user => {
       console.log(user)
-    }, this.state.provider)
+    }, this.state.provider).then(() => nextThing())
   }
 
   handleClick = ({ target }) => {

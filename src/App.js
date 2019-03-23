@@ -4,6 +4,7 @@ import Login from './components/Login';
 import { addQuestion } from './actions/questions';
 import { ConnectQuestions } from './components/Questions';
 import { subscribe } from './services/firebase';
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 class App extends Component {
 
@@ -13,18 +14,22 @@ class App extends Component {
     })
   }
 
-  handleSubmit = (name, question, event) => {
-    event.preventDefault();
-    addQuestion({ name, question })
-  }
+  // handleSubmit = (name, question, event) => {
+  //   event.preventDefault();
+  //   addQuestion({ name, question })
+  // }
 
   render() {
     return (
-        <>
-          <Login />
-          <QuestionForm handleSubmit={this.handleSubmit} />
-          <ConnectQuestions/>
-        </>
+        <Router>
+          <Switch>
+            <Route path='/' component={Login}></Route>
+            <Route path='/questions' component={ConnectQuestions} />
+          </Switch>
+          
+          {/* <QuestionForm handleSubmit={this.handleSubmit} />
+          <ConnectQuestions/> */}
+        </Router>
     );
   }
 }
