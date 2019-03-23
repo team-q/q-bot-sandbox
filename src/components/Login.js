@@ -29,6 +29,7 @@ export default class Login extends Component {
   render() {
     return (
       <>
+        <h1>Q BOT LOGIN</h1>
         <button name='google' value='google' onClick={this.handleClick}>Google</button>
         <button name='github' value='github' onClick={this.handleClick}>GitHub</button>
       </>
