@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { subscribe } from '../services/firebase';
+import { subscribe, signOut } from '../services/firebase';
 
 export default class Login extends Component {
   state = {
@@ -16,11 +16,18 @@ export default class Login extends Component {
     this.setState({ provider: target.value })
   }
 
+  handleSignOut = () => {
+    console.log('signed out')
+    signOut();
+
+  }
+
   render() {
     return (
       <>
         <button name='google' value='google' onClick={this.handleClick}>Google</button>
         <button name='github' value='github' onClick={this.handleClick}>GitHub</button>
+        <button name='signout' value='signout' onClick={this.handleSignOut}>Sign Out</button>
       </>
     );
   }
