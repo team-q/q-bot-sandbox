@@ -4,7 +4,6 @@ import { channelCollection } from '../services/firebase';
 
  export default function Questions({ channel }) {
   const questionListItems = channel && channel.map(c => {
-    console.log('hello', c);
     return (
       <li key={c.id}>
         <p>{c.id}</p>

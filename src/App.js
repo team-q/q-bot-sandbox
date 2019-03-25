@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
-import QuestionForm from './components/QuestionForm';
-import { addQuestion } from './actions/questions';
-import { ConnectQuestions } from './components/Questions';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Login from './components/Login';
+import QuestionDatabase from './components/QuestionDatabase';
+import Header from './components/Header';
+import withAuth from './components/withAuth';
 
 class App extends Component {
-
-  handleSubmit = (name, question, event) => {
-    event.preventDefault();
-    addQuestion({ name, question })
-  }
-
   render() {
     return (
-        <>
-          <QuestionForm handleSubmit={this.handleSubmit} />
-          <ConnectQuestions/>
-        </>
+      <>
+        <Header />
+        <Router>
+          <Switch>
+            <Route exact path='/' component={Login}></Route>
+            <Route exact path='/questions' component={withAuth(QuestionDatabase)} />
+          </Switch>
+        </Router>
+      </>
     );
   }
 }
