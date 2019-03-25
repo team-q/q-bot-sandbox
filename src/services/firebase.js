@@ -8,7 +8,8 @@ firebase.initializeApp({
   databaseURL: 'https://q-bot-test-7d5cb.firebaseio.com',
   projectId: 'q-bot-test-7d5cb',
   storageBucket: 'q-bot-test-7d5cb.appspot.com',
-  messagingSenderId: '894748516124'
+  messagingSenderId: '894748516124',
+  timestampsInSnapshots: true
 })
 
 export const app = firebase
