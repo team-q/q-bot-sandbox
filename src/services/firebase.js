@@ -35,5 +35,5 @@ export const subscribe = (fn, provider) => firebase.auth().onAuthStateChanged(us
 
 export const signOut = () => firebase.auth().signOut();
 
-export const redirect = () => window.location = 'http://localhost:3000/questions';
+
 

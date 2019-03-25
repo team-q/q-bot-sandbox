@@ -1,14 +1,16 @@
 
 import React, { Component } from 'react';
-import { subscribe, redirect } from '../services/firebase';
+import { subscribe } from '../services/firebase';
 
 export default class Login extends Component {
   state = {
-    provider: ''
+    provider: '',
+    loading: false
   }
 
   componentDidUpdate() {
     subscribe(user => {
+      
       console.log(user)
     }, this.state.provider)
   }
@@ -16,7 +18,8 @@ export default class Login extends Component {
   componentDidMount() {
     subscribe(user => {
       if(user) {
-        redirect();
+        this.setState({ loading: true })
+        this.props.history.replace('/questions');
       }
     })
   }
@@ -28,9 +31,9 @@ export default class Login extends Component {
   render() {
     return (
       <>
-        <h1>Q BOT LOGIN</h1>
+        {this.state.loading === false && <><h1>Q BOT LOGIN</h1>
         <button name='google' value='google' onClick={this.handleClick}>Google</button>
-        <button name='github' value='github' onClick={this.handleClick}>GitHub</button>
+        <button name='github' value='github' onClick={this.handleClick}>GitHub</button></>}
       </>
     );
   }
