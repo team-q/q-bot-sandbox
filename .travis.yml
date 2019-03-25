@@ -1,0 +1,18 @@
+language: node_js
+node_js: node
+cache:
+  directories:
+  - node_modules
+before_deploy: 
+  - cd functions && npm install
+  - cd ..
+  - "npm run build"
+deploy:
+- provider: firebase
+  token:
+    secure: LbY3qAwI5rd//2CyFtFWQzHT/IQfo3mckcJL0VUCbD+7LooI/By3UxpfJsg/smXOh19zzqF0of2FvZLdyZaAjdvooIm0077rfFpvES0ofzP7ksSnAGB8J9syHZkygMEgcA38LHibcOaqcrewzvDwyZD5BDLj0RsKK6yA5JL/CHZm3DCPbpMw9TLsYUSN2VYvqPLTm6PVY8zZQVoa5A1FUDAoyxV0AUP1JFdpKiUUO8FMZKkUfLtCVfHnqOk7dbqPlmR7/VAwtgVOmEPXi3R9GGDzq4UOFZvNqFlot3JzKuqCGF3P9npfnrhBGYPhgroumJNy06wTahESn3jdGXrJDh93rXaaTRLaGMGMN9qz6FOn+6wrSFHSz8mVevLq50L3grha/PK1Zulooj23SO5bzFk4StVkB9lq+/GM2XUcwnqdfbF5xPI2EXwt1sNwnvOYUb34O8wt46CFnMAW2cvC9f8DLxMvqdkqQ3Ggx36fRAye3HTLfr4NHiSMlBTywBnLCTYFxcQTZ3u8e/iYeshuUi6Jbx8WBoBfxk+vezaKWbxpbr7pWouUTIYkvvZJHtaacITgT8xKbUpTABAgGYz04QfVVnukNyg0CkNVHXLOFm/BPpVtGvTd0Ohcm9+dyjxooC44s0c5ePzuvV6kc0M2b6oPD3Q6F3SRTQdrBka8Xs0=
+  project: q-bot-test-7d5cb
+  message: Deploying to firebase...
+  skip_cleanup: true
+  on:
+    branch: dev
