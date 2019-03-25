@@ -10,7 +10,6 @@ export default class Login extends Component {
 
   componentDidUpdate() {
     subscribe(user => {
-      
       console.log(user)
     }, this.state.provider)
   }
