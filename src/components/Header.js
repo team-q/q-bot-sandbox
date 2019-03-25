@@ -3,10 +3,12 @@ import { signOut } from '../services/firebase';
 import { withUser } from './withUser';
 
 class Header extends PureComponent {
+  componentDidUpdate() {
+    this.props.history.replace('/');
+  }
   handleSignOut = () => {
-    console.log('signed out')
+    console.log('signed out');
     signOut();
-    window.location = 'http://localhost:3000'
   }
 
   render() {
