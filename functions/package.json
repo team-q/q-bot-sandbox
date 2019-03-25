@@ -13,8 +13,10 @@
   },
   "dependencies": {
     "@google-cloud/firestore": "1.2.0",
+    "dotenv": "^7.0.0",
     "firebase-admin": "~7.0.0",
-    "firebase-functions": "^2.2.1"
+    "firebase-functions": "^2.2.1",
+    "superagent": "^4.1.0"
   },
   "private": true
 }
