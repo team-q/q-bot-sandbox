@@ -4,8 +4,7 @@ import { subscribe } from '../services/firebase';
 
 export default class Login extends Component {
   state = {
-    provider: '',
-    loading: false
+    provider: ''
   }
 
   componentDidUpdate() {
@@ -17,7 +16,6 @@ export default class Login extends Component {
   componentDidMount() {
     subscribe(user => {
       if(user) {
-        this.setState({ loading: true })
         this.props.history.replace('/questions');
       }
     })
@@ -30,9 +28,9 @@ export default class Login extends Component {
   render() {
     return (
       <>
-        {this.state.loading === false && <><h1>Q BOT LOGIN</h1>
+        <h1>Q BOT LOGIN</h1>
         <button name='google' value='google' onClick={this.handleClick}>Google</button>
-        <button name='github' value='github' onClick={this.handleClick}>GitHub</button></>}
+        <button name='github' value='github' onClick={this.handleClick}>GitHub</button>
       </>
     );
   }

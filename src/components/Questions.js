@@ -14,9 +14,13 @@ import { channelCollection } from '../services/firebase';
   })
 
    return (
-    <ul>
+     <>
+     {channel && 
+     <ul>
       {questionListItems}
     </ul>
+    }
+    </>
   )
 }
 
