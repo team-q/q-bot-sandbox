@@ -4,11 +4,11 @@ import { channelCollection } from '../services/firebase';
 
  export default function Questions({ channel }) {
   const questionListItems = channel && channel.map(c => {
+    const question = c.question.split('> ')[1];
     return (
       <li key={c.id}>
-        <p>{c.id}</p>
         <p>{c.name}</p>
-        <p>{c.question}</p>
+        <p>{question}</p>
       </li>
     )
   })
