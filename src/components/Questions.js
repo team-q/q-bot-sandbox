@@ -15,6 +15,7 @@ import { channelCollection } from '../services/firebase';
 
    return (
      <>
+     {channel === null && <h1>Loading...</h1>}
      {channel && 
      <ul>
       {questionListItems}
