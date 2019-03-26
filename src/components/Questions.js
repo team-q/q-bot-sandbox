@@ -1,22 +1,37 @@
 import React from 'react';
 import { connectFirestore } from './connectFirestore';
 import { channelCollection } from '../services/firebase';
+import './Questions.css';
 
  export default function Questions({ channel }) {
-  const questionListItems = channel && channel.map(c => {
+  const questionTableItems = channel && channel.map(c => {
     const question = c.question.split('> ')[1];
     return (
-      <li key={c.id}>
-        <p>{c.name}</p>
-        <p>{question}</p>
-      </li>
+      
+      <tr key={c.messageId} className={'tableRow'}>
+        <td className={'tableData'}>{c.name}</td>
+        <td className={'tableData'}>{question}</td>
+      </tr>
     )
   })
 
    return (
-    <ul>
-      {questionListItems}
-    </ul>
+    <table className={'qBotTable'}>
+      <thead>
+        <tr>
+          <th className={'tableHeader'}>
+            Name
+          </th>
+          <th className={'tableHeader'}>
+            Question
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {questionTableItems}
+      </tbody>
+    </table>
+    
   )
 }
 
