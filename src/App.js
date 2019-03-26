@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Login from './components/Login';
 import Questions from './components/Questions';
-import Header from './components/Header';
 import {withAuth} from './components/withAuth';
 
 class App extends Component {

@@ -9,7 +9,7 @@ import FilterForm from './FilterForm';
  export default function Questions({ handleClick }) {
    const [filterValue, setFilterValue] = useState('')
    const channel = useFirestore(channelCollection.orderBy('timestamp', 'desc'), []).filter(c => {
-      return c.question.includes(filterValue)
+      return c.question.includes(filterValue.toLowerCase()) || c.question.includes(filterValue.toUpperCase())
    })
 
    const questionTableItems = channel && channel.map(doc => {
