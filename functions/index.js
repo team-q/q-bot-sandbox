@@ -22,10 +22,19 @@ exports.helloSlack = functions.https.onRequest((request, response) => {
     console.log('request.body: ', request.body);
     // response.status(200).send(request.body);
 
-    return admin.firestore().collection('channel').add({ messageId: request.body.event.client_msg_id, name: '', slackId: request.body.event.user, question: request.body.event.text })
-      .then(() => response.status(200).send(request.body));
-      // .then(async(snap) => {
-      //   // console.log('line 13, user._path: ', user._path.segments[1])
+    return req
+          .post('https://hooks.slack.com/services/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')
+          .set('Content-Type', 'application/json')
+          .send({ text: 'hello w' })
+          .then(() => response.status(200).send(request.body))
+          .then((res) => {
+            console.log('res', res.body)
+            return admin.firestore().collection('channel').add({ messageId: request.body.event.client_msg_id, name: '', TA: '', slackId: request.body.event.user, question: request.body.event.text })
+              .then(() => response.status(200).send(request.body))
+              .then(() => {
+                console.log('line 18, hit request')
+              })
+          })
 
       //   const userSnap = await snap.get();
       //   console.log('line 17 snap: ', snap);
