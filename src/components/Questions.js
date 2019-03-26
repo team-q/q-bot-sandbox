@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useFirestore } from './connectFirestore';
 import { channelCollection } from '../services/firebase';
+import Header from './Header';
 import './Questions.css';
 import Question from './Question';
 import FilterForm from './FilterForm';
@@ -32,6 +33,7 @@ import FilterForm from './FilterForm';
 
    return (
     <>
+    <Header />
     {channel === null && <h1>Loading...</h1>}
     { channel && 
       <>

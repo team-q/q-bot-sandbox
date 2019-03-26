@@ -9,10 +9,9 @@ class App extends Component {
   render() {
     return (
       <>
-        <Header />
         <Router>
           <Switch>
-            <Route exact path='/' component={Login}></Route>
+            <Route exact path='/' component={Login} />
             <Route exact path='/questions' component={withAuth(Questions)} />
           </Switch>
         </Router>
