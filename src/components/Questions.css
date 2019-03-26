@@ -7,12 +7,15 @@
   border-radius: 10px;
   box-shadow: 0 8px 6px -6px black;
 }
+
 .tableRow {
   border: 1px solid #D9E4E6;
 }
+
 .tableRow:hover {
   background-color: #ececff;
 }
+
 .tableHeader {
   display: none;
   border-top-left-radius: 10px;
@@ -22,20 +25,29 @@
   color: #FFF;
   padding: 1em;
 }
+
 .tableHeader:first-child {
   display: table-cell;
   text-align: center;
 }
+
 .tableHeader:nth-child(2) {
   display: table-cell;
   text-align: center;
 }
+
+.tableHeader:nth-child(3) {
+  text-align: center;
+}
+
 .tableHeader:nth-child(2) span {
   display: none;
 }
+
 .tableHeader:nth-child(2):after {
   content: attr(data-th);
 }
+
 @media (min-width: 480px) {
   .tableHeader:nth-child(2) span {
     display: block;
@@ -44,29 +56,60 @@
     display: none;
   }
 }
+
 .tableData {
   display: block;
   word-wrap: break-word;
   max-width: 7em;
 }
+
 .tableData:first-child {
   display: table-cell;
   text-align: center;
 }
+
 @media (min-width: 480px) {
   .tableData {
     border: 1px solid #D9E4E6;
   }
 }
+
 .tableHeader, .tableData {
   text-align: left;
   margin: .5em 1em;
 }
+
 @media (min-width: 480px) {
   .tableHeader, .tableData {
     display: table-cell;
     padding: 1em;
   }
+}
+
+.taButtonActive {
+  float: right;
+  background-color: #ABFF00;
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px;
+}
+
+.taButtonActive:hover {
+  background-color: rgb(86, 162, 0);
+}
+
+.taButton {
+  float: right;
+  background-color: #F00;
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px;
+}
+
+.taButton:hover {
+  background-color: #A00;
 }
 
 body {

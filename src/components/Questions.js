@@ -11,7 +11,8 @@ import './Questions.css';
         <td className={'tableData'}>{c.name}</td>
         <td className={'tableData'}>{question}</td>
         <td className={'tableData'}>
-          {c.TA}<button onClick={handleClick.bind(null, c.id)}>Add TA</button>
+          {c.TA}
+          <button onClick={handleClick.bind(null, c.id)} className={'taButton' + (c.TA !== undefined ? 'Active' : '')}></button>
         </td>
       </tr>
     )
@@ -20,24 +21,26 @@ import './Questions.css';
    return (
     <>
     {channel === null && <h1>Loading...</h1>}
-    { channel && <table className={'qBotTable'}>
-    <thead>
-      <tr>
-        <th className={'tableHeader'}>
-          Name
-        </th>
-        <th className={'tableHeader'}>
-          Question
-        </th>
-        <th className={'tableHeader'}>
-          TA
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      {questionTableItems}
-    </tbody>
-  </table> }
+    { channel && 
+    <table className={'qBotTable'}>
+      <thead>
+        <tr>
+          <th className={'tableHeader'}>
+            Name
+          </th>
+          <th className={'tableHeader'}>
+            Question
+          </th>
+          <th className={'tableHeader'}>
+            TA
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {questionTableItems}
+      </tbody>
+    </table> 
+    }
   </>
   )
 }
