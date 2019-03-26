@@ -1,13 +1,18 @@
 import React, { PureComponent } from 'react';
 import TAForm from './TAForm';
 import TAList from './TAList';
-import { addTA } from '../actions/TA';
+import { addTA, deleteTA } from '../actions/TA';
 
 export default class LeaderBoard extends PureComponent {
   handleSubmit = (name, cohort, event) => {
-    event.preventDefault()
-    addTA({ name, cohort })
-    console.log('TA added')
+    event.preventDefault();
+    addTA({ name, cohort });
+    console.log('TA added');
+  }
+
+  handleDelete = (id) => {
+    deleteTA(id);
+    console.log('TA deleted', id);
   }
 
   render() {
@@ -15,7 +20,7 @@ export default class LeaderBoard extends PureComponent {
       <>
         <h1>TA Leader Board</h1>
         <TAForm handleSubmit={this.handleSubmit}/>
-        <TAList />
+        <TAList handleDelete={this.handleDelete} />
       </>
     );
   }

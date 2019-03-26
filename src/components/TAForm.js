@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 export default function TAForm({ handleSubmit }) {
   const [ name, setName ] = useState('')
   const [ cohort, setCohort ] = useState('')
-
     return (
       <>
         <h2>Add New TA</h2>
