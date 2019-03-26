@@ -1,33 +1,47 @@
 import React from 'react';
 import { connectFirestore } from './connectFirestore';
 import { channelCollection } from '../services/firebase';
+import './Questions.css';
 
  export default function Questions({ channel, handleClick }) {
-   const questionListItems = channel && channel.map(c => {
-    const { id, name, question, TA } = c;
-     const q = question.split('> ')[1];
-     const newDate = new Date(1553626166.023600 * 1000);
-    console.log(newDate);
-
+  const questionTableItems = channel && channel.map(c => {
+    const question = c.question.split('> ')[1];
     return (
-      <li key={id}>
-        <p>{name}</p>
-        <p>{q}</p>
-        <p>TA: {TA}</p>
-        <button onClick={handleClick.bind(null, id)}>Add TA</button>
-      </li>
+      <tr key={c.id} className={'tableRow'}>
+        <td className={'tableData'}>{c.name}</td>
+        <td className={'tableData'}>{question}</td>
+        <td className={'tableData'}>
+          {c.TA}
+          <button onClick={handleClick.bind(null, c.id)} className={'taButton' + (c.TA !== undefined ? 'Active' : '')}></button>
+        </td>
+      </tr>
     )
   })
 
    return (
-     <>
-     {channel === null && <h1>Loading...</h1>}
-     {channel && 
-     <ul>
-      {questionListItems}
-    </ul>
+    <>
+    {channel === null && <h1>Loading...</h1>}
+    { channel && 
+    <table className={'qBotTable'}>
+      <thead>
+        <tr>
+          <th className={'tableHeader'}>
+            Name
+          </th>
+          <th className={'tableHeader'}>
+            Question
+          </th>
+          <th className={'tableHeader'}>
+            TA
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {questionTableItems}
+      </tbody>
+    </table> 
     }
-    </>
+  </>
   )
 }
 
