@@ -25,15 +25,14 @@ exports.helloSlack = functions.https.onRequest((request, response) => {
     // response.status(200).send(request.body);
 
     return req
-          .post('https://hooks.slack.com/services/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')
+          .post('https://hooks.slack.com/services/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')
           .set('Content-Type', 'application/json')
-          .send({ text: 'hello w' })
+          .send({ text: 'your question has been added to the queue' })
           .then((res) => {
-            console.log('res', res.body)
             return admin.firestore().collection('channel').add({ messageId: request.body.event.client_msg_id, name: '', TA: '', slackId: request.body.event.user, question: request.body.event.text })
               .then(() => response.status(200).send(request.body))
               .then(() => {
-                console.log('line 18, hit request')
+                console.log('line 35, hit request')
               })
           })
 
