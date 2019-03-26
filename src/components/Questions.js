@@ -1,5 +1,5 @@
 import React from 'react';
-import { connectFirestore } from './connectFirestore';
+import { connectFirestore } from './useFirestore';
 import { channelCollection } from '../services/firebase';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import './Questions.css';

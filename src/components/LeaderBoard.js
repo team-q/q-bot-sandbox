@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import TAForm from './TAForm';
+import TAList from './TAList';
 import { addTA } from '../actions/TA';
 
 export default class LeaderBoard extends PureComponent {
@@ -14,6 +15,7 @@ export default class LeaderBoard extends PureComponent {
       <>
         <h1>TA Leader Board</h1>
         <TAForm handleSubmit={this.handleSubmit}/>
+        <TAList />
       </>
     );
   }
