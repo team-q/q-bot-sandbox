@@ -13,9 +13,7 @@ firebase.initializeApp({
 })
 
 export const app = firebase
-
 export const firestore = app.firestore()
-
 export const channelCollection = firestore.collection('channel')
 
 const googleProvider = new firebase.auth.GoogleAuthProvider()
@@ -27,13 +25,12 @@ export const subscribe = (fn, provider) => firebase.auth().onAuthStateChanged(us
   }
   else if (provider === 'google') {
     firebase.auth().signInWithRedirect(googleProvider)
+      .catch(console.log)
   }
   else if (provider === 'github') {
     firebase.auth().signInWithRedirect(githubProvider)
+      .catch(console.log)
   }
 })
 
 export const signOut = () => firebase.auth().signOut();
-
-
-
