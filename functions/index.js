@@ -68,46 +68,14 @@ exports.processQuestion = functions.firestore.document('channel/{id}').onCreate(
     })
 })
 
-exports.helloSlack = functions.https.onRequest((request, response) => {
-    console.log('request.body: ', request.body);
-    /* returns:
-    1). 
-    {
-      token: '***123***',
-      team_id: '***123***',
-      api_app_id: 'AH0P0PZED',
-      event: {
-        client_msg_id: 'ABCDE-123',
-        type: 'app_mention',
-        text: '<@ABCDE> this is a TEST',
-        user: 'ABCDE',
-        ts: '1553560978.007800', // IN EPOCH / UTC TIME (pst = -8 hours)
-        channel: 'ABCDE',
-        event_ts: '1553560978.007800'
-      },
-      type: 'event_callback',
-      event_id: 'EvH9GJ8692',
-      event_time: 1553560978,
-      authed_users: [ 'ABCDE' ]
-    }
-  */
-    return admin.firestore().collection('channel').add({
-      messageId: request.body.event.client_msg_id,
-      name: '',
-      slackId: request.body.event.user,
-      question: request.body.event.text
-    })
-      .then(() => response.status(200).send(request.body));
+exports.helloSlack = functions.https.onRequest(async(request, response) => {
+  console.log('request.body: ', request.body);
+  return req
+  .post('https://hooks.slack.com/services/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')
+  .set('Content-Type', 'application/json')
+  .send({ text: 'your question has been added to the queue', thread_ts: request.body.event.ts })
+  .then(() => {
+    return admin.firestore().collection('channel').add({ messageId: request.body.event.client_msg_id, name: '', slackId: request.body.event.user, question: request.body.event.text })
+      .then(() => response.status(200).send(request.body))
+  })
 });
-
-
-// SETUP ~ for Slack event subscription Request URL (to verify via challenge setup step)
-// exports.helloSlack = functions.https.onRequest((request, response) => {
-//   if (request) {
-//     console.log('request.body: ', request.body);
-//     response.status(200).send(request.body);
-//   } else {
-//     console.log("Request Error...");
-//     throw response.status(500);
-//   }
-// });
