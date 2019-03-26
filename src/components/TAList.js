@@ -4,9 +4,10 @@ import { taCollection } from '../services/firebase';
 import TA from './TA';
 
 export default function TAList() {
-  const channel = useFirestore(taCollection.orderBy('name'))
+  const channel = useFirestore(taCollection, [])
   const list = channel.map(doc => {
-    return <TA name={doc.name} cohort={doc.cohort} />
+    console.log(doc);
+    return <TA key={doc.id} name={doc.name} cohort={doc.cohort} />
   })
   return (
     <>
