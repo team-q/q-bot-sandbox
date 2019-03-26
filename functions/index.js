@@ -17,50 +17,18 @@ exports.processQuestion = functions.firestore.document('channel/{id}').onCreate(
     })
 })
 
-
-
 exports.helloSlack = functions.https.onRequest((request, response) => {
   // if (request) {
     console.log('request.body: ', request.body);
     // response.status(200).send(request.body);
 
     return req
-          .post('https://hooks.slack.com/services/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')
-          .set('Content-Type', 'application/json')
-          .send({ text: 'your question has been added to the queue' })
-          .then((res) => {
-            return admin.firestore().collection('channel').add({ messageId: request.body.event.client_msg_id, name: '', TA: '', slackId: request.body.event.user, question: request.body.event.text })
-              .then(() => response.status(200).send(request.body))
-              .then(() => {
-                console.log('line 35, hit request')
-              })
-          })
-
-      // .then(async(snap) => {
-      //   // console.log('line 13, user._path: ', user._path.segments[1])
-
-      //   const userSnap = await snap.get();
-      //   console.log('line 17 snap: ', snap);
-      //   const userObj = userSnap.data(); // name
-      //   const docID = userSnap.id; // doc id
-
-      //   // const docId = snap._path.segments[1];
-
-      //   return req.get('https://slack.com/api/users.info?token=xoxp-579541968176-583390193862-584929040352-c60bce2126fa813107661000a0fcbd85&user=UH5BG5PRC&pretty=1')
-      //   // return request.get('https://yesno.wtf/api', {
-      //   //   headers: {
-      //   //     'Content-Type': 'application/json'
-      //   //   }
-      //   // })
-      //     .then(async(results) => {
-      //       await console.log('line 16, slack get request "results:" ', results);
-      //       // return admin.firestore().collection('channel').doc(id).update({ ...user, name: results.real_name })
-      //     })
-      // })
-
-    // return admin.database().ref('/slack').push({ body: request.body });
-  // } else {
-  //   console.log("Request Error...");
-  //   throw response.status(500);
-  // }
+      .post('https://hooks.slack.com/services/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')
+      .set('Content-Type', 'application/json')
+      .send({ text: 'your question has been added to the queue', thread_ts: request.body.event.ts })
+      .then((message) => {
+        console.log('message', message);
+        return admin.firestore().collection('channel').add({ messageId: request.body.event.client_msg_id, name: '', TA: '', slackId: request.body.event.user, question: request.body.event.text })
+          .then(() => response.status(200).send(request.body))
+      })
 });
