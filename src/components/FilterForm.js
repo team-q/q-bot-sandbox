@@ -1,8 +1,7 @@
 import React from 'react';
-import { filterMessages } from '../actions/questions';
 
-export default function FilterForm() {
+export default function FilterForm({ value, onChange }) {
   return (
-    <input type="text" name="searchTerm" onChange={filterMessages} />
+    <input type="text" name="searchTerm" value={value} onChange={onChange} />
   )
 }
