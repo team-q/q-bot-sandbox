@@ -1,9 +1,8 @@
 import React from 'react';
 import { connectFirestore } from './connectFirestore';
 import { channelCollection } from '../services/firebase';
-import { withAuthentication } from './withAuth';
 
- export default function Questions({ channel, providerData, onClick }) {
+ export function Questions({ channel, onClick }) {
   const questionListItems = channel && channel.map(c => {
     const question = c.question.split('> ')[1];
     return (
@@ -27,4 +26,4 @@ import { withAuthentication } from './withAuth';
 
  export const ConnectQuestions = connectFirestore(
   channelCollection, 'channel'
-)(withAuthentication(Questions))
+)(Questions)

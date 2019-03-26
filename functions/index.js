@@ -14,14 +14,6 @@ exports.processQuestion = functions.firestore.document('channel/{id}').onCreate(
     .then(res => {
       console.log('line 16, slack get request "res.body:" ', res.body);
       return admin.firestore().collection('channel').doc(context.params.id).update({ name: res.body.user.real_name })
-      .then(() => {
-        console.log('line 18, hit request')
-        return req
-          .post('https://hooks.slack.com/services/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')
-          .set('Content-Type', 'application/json')
-          .send({ text: 'hello w' })
-          .then(res => console.log)
-      })
     })
 })
 
@@ -33,7 +25,15 @@ exports.helloSlack = functions.https.onRequest((request, response) => {
     // response.status(200).send(request.body);
 
     return admin.firestore().collection('channel').add({ messageId: request.body.event.client_msg_id, name: '', TA: '', slackId: request.body.event.user, question: request.body.event.text })
-      .then(() => response.status(200).send(request.body));
+      .then(() => response.status(200).send(request.body))
+      // .then(() => {
+      //   console.log('line 18, hit request')
+      //   return req
+      //     .post('https://hooks.slack.com/services/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')
+      //     .set('Content-Type', 'application/json')
+      //     .send({ text: 'hello w' })
+      //     .then(res => console.log)
+      // })
       // .then(async(snap) => {
       //   // console.log('line 13, user._path: ', user._path.segments[1])
 

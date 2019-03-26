@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Delay from 'react-delay';
 import firebase from 'firebase/app';
 
-export const withAuthentication = WrappedComponent => {
+export const withAuth = WrappedComponent => {
   class WithAuthentication extends Component {
     state = {
       providerData: []
