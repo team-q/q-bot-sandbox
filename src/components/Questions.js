@@ -1,6 +1,7 @@
 import React from 'react';
 import { connectFirestore } from './connectFirestore';
 import { channelCollection } from '../services/firebase';
+import Header from './Header';
 import './Questions.css';
 
  export default function Questions({ channel, handleClick }) {
@@ -20,6 +21,7 @@ import './Questions.css';
 
    return (
     <>
+    <Header />
     {channel === null && <h1>Loading...</h1>}
     { channel && 
     <table className={'qBotTable'}>
