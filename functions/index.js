@@ -95,7 +95,8 @@ exports.helloSlack = functions.https.onRequest((request, response) => {
       messageId: request.body.event.client_msg_id,
       name: '',
       slackId: request.body.event.user,
-      question: request.body.event.text
+      question: request.body.event.text,
+      timestamp: request.body.even.ts
     })
       .then(() => response.status(200).send(request.body));
 });

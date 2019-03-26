@@ -3,14 +3,18 @@ import { connectFirestore } from './connectFirestore';
 import { channelCollection } from '../services/firebase';
 
  export default function Questions({ channel, handleClick }) {
-  const questionListItems = channel && channel.map(c => {
-    const question = c.question.split('> ')[1];
+   const questionListItems = channel && channel.map(c => {
+    const { id, name, question, TA } = c;
+     const q = question.split('> ')[1];
+     const newDate = new Date(1553626166.023600 * 1000);
+    console.log(newDate);
+
     return (
-      <li key={c.id}>
-        <p>{c.name}</p>
-        <p>{question}</p>
-        <p>TA: {c.TA}</p>
-        <button onClick={handleClick.bind(null, c.id)}>Add TA</button>
+      <li key={id}>
+        <p>{name}</p>
+        <p>{q}</p>
+        <p>TA: {TA}</p>
+        <button onClick={handleClick.bind(null, id)}>Add TA</button>
       </li>
     )
   })
