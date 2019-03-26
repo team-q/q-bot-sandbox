@@ -24,16 +24,16 @@ const githubProvider = new firebase.auth.GithubAuthProvider()
 export const subscribe = (fn, provider) => firebase.auth().onAuthStateChanged(user => {
   if(user) {
     fn(user)
+    console.log(user);
   }
   else if (provider === 'google') {
     firebase.auth().signInWithRedirect(googleProvider)
+      .catch(console.log)
   }
   else if (provider === 'github') {
     firebase.auth().signInWithRedirect(githubProvider)
+      .catch(console.log)
   }
 })
 
 export const signOut = () => firebase.auth().signOut();
-
-
-
