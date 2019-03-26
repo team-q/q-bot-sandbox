@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useFirestore } from './connectFirestore';
 import { channelCollection } from '../services/firebase';
+import Header from './Header';
 import './Questions.css';
 import Question from './Question';
 import FilterForm from './FilterForm';
-import { Route, Link} from 'react-router-dom'
 
  export default function Questions({ handleClick }) {
    const [filterValue, setFilterValue] = useState('')
@@ -33,13 +33,10 @@ import { Route, Link} from 'react-router-dom'
 
    return (
     <>
+    <Header />
     {channel === null && <h1>Loading...</h1>}
     { channel && 
       <>
-        <Route>
-          <Link to='/leaderboard'>Leaderboard</Link>
-        </Route>
-       
         <FilterForm value={filterValue} onChange={({target}) => setFilterValue(target.value)}/>
         <table className={'qBotTable'}>
           <thead>
