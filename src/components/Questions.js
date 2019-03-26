@@ -1,6 +1,7 @@
 import React from 'react';
 import { connectFirestore } from './connectFirestore';
 import { channelCollection } from '../services/firebase';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 import './Questions.css';
 
  export default function Questions({ channel, handleClick }) {
@@ -28,27 +29,32 @@ import './Questions.css';
     <>
     {channel === null && <h1>Loading...</h1>}
     { channel && 
-    <table className={'qBotTable'}>
-      <thead>
-        <tr>
-          <th className={'tableHeader'}>
-            Name
-          </th>
-          <th className={'tableHeader'}>
-            Question
-          </th>
-          <th className={'tableHeader'}>
-            Timestamp
-          </th>
-          <th className={'tableHeader'}>
-            TA
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {questionTableItems}
-      </tbody>
-    </table> 
+    <div>
+    <Router>
+      <Link to="/leaderboard" />
+    </Router>
+      <table className={'qBotTable'}>
+        <thead>
+          <tr>
+            <th className={'tableHeader'}>
+              Name
+            </th>
+            <th className={'tableHeader'}>
+              Question
+            </th>
+            <th className={'tableHeader'}>
+              Timestamp
+            </th>
+            <th className={'tableHeader'}>
+              TA
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {questionTableItems}
+        </tbody>
+      </table> 
+    </div>
     }
   </>
   )

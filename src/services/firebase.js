@@ -15,6 +15,7 @@ firebase.initializeApp({
 export const app = firebase
 export const firestore = app.firestore()
 export const channelCollection = firestore.collection('channel')
+export const taCollection = firestore.collection('TA')
 
 const googleProvider = new firebase.auth.GoogleAuthProvider()
 const githubProvider = new firebase.auth.GithubAuthProvider()
