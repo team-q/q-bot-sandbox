@@ -1,3 +1,3 @@
 import { channelCollection } from '../services/firebase';
 
-export const addQuestion = question => channelCollection.add(question);
+export const addTA = (ta, id) => channelCollection.doc(id).update({TA: ta})
