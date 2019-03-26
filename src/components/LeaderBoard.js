@@ -22,7 +22,6 @@ export default class LeaderBoard extends PureComponent {
   render() {
     return (
       <>
-        <h1>TA Leader Board</h1>
         <TAForm handleSubmit={this.handleSubmit}/>
         <TAList handleDelete={this.handleDelete} />
       </>

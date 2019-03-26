@@ -10,7 +10,7 @@ export default function TAList({ handleDelete }) {
   })
   return (
     <>
-      <h1>TA List</h1>
+      <h1>TA Leader Board</h1>
       <table className={'leaderTable'}>
         <thead>
           <tr>
