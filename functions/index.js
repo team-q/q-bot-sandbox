@@ -14,8 +14,18 @@ exports.processQuestion = functions.firestore.document('channel/{id}').onCreate(
     .then(res => {
       console.log('line 16, slack get request "res.body:" ', res.body);
       return admin.firestore().collection('channel').doc(context.params.id).update({ name: res.body.user.real_name })
+      .then(() => {
+        console.log('line 18, hit request')
+        return req
+          .post('https://hooks.slack.com/services/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')
+          .set('Content-Type', 'application/json')
+          .send({ text: 'hello w' })
+          .then(res => console.log)
+      })
     })
 })
+
+
 
 exports.helloSlack = functions.https.onRequest((request, response) => {
   // if (request) {

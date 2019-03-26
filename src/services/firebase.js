@@ -3,12 +3,12 @@ import 'firebase/firestore';
 import 'firebase/auth'
 
 firebase.initializeApp({
-  apiKey: process.env.API_KEY,
-  authDomain: process.env.AUTH_DOMAIN,
-  databaseURL: process.env.DB_URL,
-  projectId: process.env.DB_URL,
-  storageBucket: process.env.STORAGE_BUCKET,
-  messagingSenderId: process.env.MSG_SENDER_ID,
+  apiKey: 'AIzaSyAM_SACKWLecd92TF3n5uUvDclmOLHOTQA',
+  authDomain: 'q-bot-test-7d5cb.firebaseapp.com',
+  databaseURL: 'https://q-bot-test-7d5cb.firebaseio.com',
+  projectId: 'q-bot-test-7d5cb',
+  storageBucket: 'q-bot-test-7d5cb.appspot.com',
+  messagingSenderId: '894748516124',
   timestampsInSnapshots: true
 })
 
