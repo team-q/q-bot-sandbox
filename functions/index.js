@@ -17,8 +17,6 @@ exports.processQuestion = functions.firestore.document('channel/{id}').onCreate(
       return admin.firestore().collection('channel').doc(context.params.id).update({ name: res.body.user.real_name })
     })
     .then(() => {
-      // const matches = await admin.firestore().collection('channel').where('messageId', '==', messageId).get()
-      // if(matches.docs.length > 2) return admin.firestore().collection('channel').doc(context.params.id).delete();
       return req
         .post('https://hooks.slack.com/services/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')
         .set('Content-Type', 'application/json')
