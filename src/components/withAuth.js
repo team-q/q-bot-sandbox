@@ -22,7 +22,6 @@ export const withAuth = WrappedComponent => {
 
     handleClick = (id) => {
       const ta = this.state.providerData[0].displayName;
-      console.log(this.state.providerData);
       return addTA(ta, id);
     }
 

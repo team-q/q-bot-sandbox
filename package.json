@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "firebase": "^5.9.1",
-    "prop-types": "^15.7.2",
     "react": "^16.8.5",
     "react-delay": "^0.1.0",
     "react-dom": "^16.8.5",

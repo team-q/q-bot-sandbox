@@ -22,7 +22,6 @@ const githubProvider = new firebase.auth.GithubAuthProvider()
 export const subscribe = (fn, provider) => firebase.auth().onAuthStateChanged(user => {
   if(user) {
     fn(user)
-    console.log('subscribe', user);
   }
   else if (provider === 'google') {
     firebase.auth().signInWithRedirect(googleProvider)

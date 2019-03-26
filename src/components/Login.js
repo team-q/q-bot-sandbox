@@ -8,7 +8,7 @@ export default class Login extends Component {
 
   componentDidUpdate() {
     subscribe(user => {
-      console.log('login component', user)
+      console.log('logging in');
     }, this.state.provider)
   }
 
