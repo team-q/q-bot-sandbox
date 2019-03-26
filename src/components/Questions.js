@@ -2,8 +2,6 @@ import React from 'react';
 import { connectFirestore } from './connectFirestore';
 import { channelCollection } from '../services/firebase';
 import './Questions.css';
-import moment from 'moment';
-moment().format();
 
  export default function Questions({ channel, handleClick }) {
    const questionTableItems = channel && channel.map(c => {
