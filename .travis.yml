@@ -15,4 +15,4 @@ deploy:
   message: Deploying to firebase...
   skip_cleanup: true
   on:
-    branch: dev
+    branch: master
