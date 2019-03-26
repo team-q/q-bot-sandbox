@@ -32,7 +32,7 @@ exports.helloSlack = functions.https.onRequest((request, response) => {
     console.log('request.body: ', request.body);
     // response.status(200).send(request.body);
 
-    return admin.firestore().collection('channel').add({ messageId: request.body.event.client_msg_id, name: '', slackId: request.body.event.user, question: request.body.event.text })
+    return admin.firestore().collection('channel').add({ messageId: request.body.event.client_msg_id, name: '', TA: '', slackId: request.body.event.user, question: request.body.event.text })
       .then(() => response.status(200).send(request.body));
       // .then(async(snap) => {
       //   // console.log('line 13, user._path: ', user._path.segments[1])

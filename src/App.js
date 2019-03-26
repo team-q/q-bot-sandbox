@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Login from './components/Login';
 import QuestionDatabase from './components/QuestionDatabase';
 import Header from './components/Header';
-import withAuth from './components/withAuth';
+// import { withAuthentication } from './components/withAuth';
 
 class App extends Component {
   render() {
@@ -13,7 +13,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path='/' component={Login}></Route>
-            <Route exact path='/questions' component={withAuth(QuestionDatabase)} />
+            <Route exact path='/questions' component={QuestionDatabase} />
           </Switch>
         </Router>
       </>
