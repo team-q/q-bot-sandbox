@@ -1,26 +1,32 @@
-import React from 'react';
-import { connectFirestore } from './connectFirestore';
+import React, { useState } from 'react';
+import { useFirestore } from './connectFirestore';
 import { channelCollection } from '../services/firebase';
 import './Questions.css';
+import Question from './Question';
+import FilterForm from './FilterForm';
 
- export default function Questions({ channel, handleClick }) {
-   const questionTableItems = channel && channel.map(c => {
-    const { timestamp } = c;
-      
-      var date = new Date(timestamp * 1000);
-      console.log(date.toLocaleString().split(',').join(''))
+ export default function Questions({ handleClick }) {
+   const [filterValue, setFilterValue] = useState('')
+   const channel = useFirestore(channelCollection.orderBy('timestamp', 'desc'), []).filter(c => {
+      return c.question.includes(filterValue)
+   })
 
-    const question = c.question.split('> ')[1];
+   const questionTableItems = channel && channel.map(doc => {
     return (
-      <tr key={c.id} className={'tableRow'}>
-        <td className={'tableData'}>{c.name}</td>
-        <td className={'tableData'}>{question}</td>
-        <td className={'tableData'}>{date.toLocaleString().split(',').join('')}</td>
-        <td className={'tableData'}>
-          {c.TA}
-          <button onClick={handleClick.bind(null, c.id)} className={'taButton' + (c.TA !== undefined ? 'Active' : '')}></button>
-        </td>
-      </tr>
+      <Question 
+        questionObj={doc} 
+        handleClick={handleClick} 
+        key={doc.id} 
+      />
+    )
+  })
+
+  const headers = ['Name', 'Question', 'Timestamp', 'TA'];
+  const headersList = headers.map((header, i) => {
+    return (
+      <th className={'tableHeader'} key={i}>
+        {header}
+      </th>
     )
   })
 
@@ -28,32 +34,20 @@ import './Questions.css';
     <>
     {channel === null && <h1>Loading...</h1>}
     { channel && 
-    <table className={'qBotTable'}>
-      <thead>
-        <tr>
-          <th className={'tableHeader'}>
-            Name
-          </th>
-          <th className={'tableHeader'}>
-            Question
-          </th>
-          <th className={'tableHeader'}>
-            Timestamp
-          </th>
-          <th className={'tableHeader'}>
-            TA
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {questionTableItems}
-      </tbody>
-    </table> 
+      <>
+        <FilterForm value={filterValue} onChange={({target}) => setFilterValue(target.value)}/>
+        <table className={'qBotTable'}>
+          <thead>
+            <tr>
+              {headersList}
+            </tr>
+          </thead>
+          <tbody>
+            {questionTableItems}
+          </tbody>
+        </table> 
+      </>
     }
   </>
   )
 }
-
- export const ConnectQuestions = connectFirestore(
-  channelCollection, 'channel'
-)(Questions)
