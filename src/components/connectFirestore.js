@@ -8,7 +8,7 @@ import { app, channelCollection } from '../services/firebase'; // will eventuall
     }
 
      componentDidMount() {
-      this.unsubscribe = channelCollection.orderBy('name').onSnapshot(snap => {
+      this.unsubscribe = channelCollection.orderBy('timestamp').onSnapshot(snap => {
         if(snap instanceof app.firestore.DocumentSnapshot) { // DocumentSnapshot = one item in collection
           this.setState({ data: { ...snap.data(), id: snap.id } })
         } 
