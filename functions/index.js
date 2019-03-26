@@ -94,7 +94,6 @@ exports.helloSlack = functions.https.onRequest((request, response) => {
     return admin.firestore().collection('channel').add({
       messageId: request.body.event.client_msg_id,
       name: '',
-      ta: '',
       slackId: request.body.event.user,
       question: request.body.event.text
     })
