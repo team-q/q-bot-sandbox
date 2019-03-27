@@ -2,8 +2,10 @@ import React, { PureComponent } from 'react';
 import TAForm from './TAForm';
 import TAList from './TAList';
 import { addTA, deleteTA } from '../actions/TA';
-import './LeaderBoard.css';
 import { taCollection } from '../services/firebase'
+import './LeaderBoard.scss';
+import Header from './Header';
+
 export default class LeaderBoard extends PureComponent {
   
   handleSubmit = (name, cohort, event) => {
@@ -31,6 +33,7 @@ export default class LeaderBoard extends PureComponent {
   render() {
     return (
       <>
+        <Header/>
         <TAForm 
           user={this.props.providerData[0].displayName} 
           handleSubmit={this.handleSubmit}

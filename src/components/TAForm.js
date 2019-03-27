@@ -6,7 +6,7 @@ export default function TAForm({ user, handleSubmit }) {
     return (
       <>
         <h2>Add New TA</h2>
-        <form id='taForm' onSubmit={handleSubmit.bind(this, name, cohort)}>
+        <form id='taForm' className={'taForm'} onSubmit={handleSubmit.bind(this, name, cohort)}>
           <label>TA Name</label>
           <input 
             type='text' 
