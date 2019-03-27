@@ -137,7 +137,7 @@ body {
   background: #f2f2f2;
 }
 
-.submit {
+.submit, .logout {
   padding:5px 15px; 
   border:2px solid #ccc;
   margin-left: 10px; 
