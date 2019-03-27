@@ -6,7 +6,7 @@ const admin = require('firebase-admin');
 admin.initializeApp();
 
 exports.processQuestion = functions.firestore.document('channel/{id}').onCreate(async(snap, context) => {
-  const { slackId, messageId } = snap.data();
+  const { slackId, messageId, channelId } = snap.data();
   console.log('snap.data(): ', snap.data());
 
   const matches = await admin.firestore().collection('channel').where('messageId', '==', messageId).get()
@@ -15,6 +15,12 @@ exports.processQuestion = functions.firestore.document('channel/{id}').onCreate(
     .then(res => {
       console.log('line 16, slack get request "res.body:" ', res.body);
       return admin.firestore().collection('channel').doc(context.params.id).update({ name: res.body.user.real_name })
+      .then(() => {
+        return req.get(`https://slack.com/api/channels.info?token=${process.env.CHANNEL_TOKEN}&channel=${channelId}&pretty=1`)
+          .then((res) => {
+            return admin.firestore().collection('channel').doc(context.params.id).update({ channelName: res.body.channel.name })
+          })
+        })
     })
     .then(() => {
       return req
@@ -31,7 +37,9 @@ exports.helloSlack = functions.https.onRequest((request, response) => {
         name: '',
         slackId: request.body.event.user,
         question: request.body.event.text,
-        timestamp: request.body.event.ts
+        timestamp: request.body.event.ts,
+        channelId: request.body.event.channel,
+        channelName: ''
       })
-        .then(() => response.status(200).send(request.body));
+        .then(() => response.status(200).send(request.body))
 });
