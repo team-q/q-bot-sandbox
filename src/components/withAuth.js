@@ -12,7 +12,6 @@ export const withAuth = WrappedComponent => {
       this.unsubscribe = subscribe(user => {
         this.setState({ providerData: user.providerData });
       }, () => {
-          alert('Must be authenticated!');
           this.props.history.replace('/');
         })
     }
