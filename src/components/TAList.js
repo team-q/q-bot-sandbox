@@ -16,7 +16,7 @@ export default function TAList({ handleDelete }) {
           <tr>
             <th className={'tableHeader'}>Name</th>
             <th className={'tableHeader'}>Cohort</th>
-            <th className={'tableHeader'}>Claims</th>
+            <th className={'tableHeader'}>Claimed Tickets</th>
             <th className={'tableHeader'}>Delete</th>
           </tr>
         </thead>

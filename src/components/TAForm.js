@@ -13,7 +13,7 @@ export default function TAForm({ handleSubmit }) {
           <label>Cohort</label>
           <input type='text' name='cohort' value={cohort} onChange={({target}) => setCohort(target.value)}/>
 
-          <button type='submit'>Submit</button>
+          <button className={'submit'}type='submit'>Submit</button>
         </form>
       </>
     );
