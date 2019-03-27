@@ -17,20 +17,27 @@ export const firestore = app.firestore()
 export const channelCollection = firestore.collection('channel')
 export const taCollection = firestore.collection('TA')
 
-const googleProvider = new firebase.auth.GoogleAuthProvider()
-const githubProvider = new firebase.auth.GithubAuthProvider()
+export const auth = app.auth();
+export const loginMethod = auth.signInWithPopup;
+export const googleProvider = new firebase.auth.GoogleAuthProvider()
+export const githubProvider = new firebase.auth.GithubAuthProvider()
 
-export const subscribe = (fn, provider) => firebase.auth().onAuthStateChanged(user => {
+export const loginWithProvider = provider => {
+  if(provider === 'google') {
+    return firebase.auth().signInWithPopup(googleProvider)
+  }
+  else if(provider === 'github') {
+    return firebase.auth().signInWithPopup(githubProvider)
+  } else {
+    return Promise.resolve()
+  }
+}
+
+export const subscribe = (fn, noUserFn) => firebase.auth().onAuthStateChanged(user => {
   if(user) {
     fn(user)
-  }
-  else if (provider === 'google') {
-    firebase.auth().signInWithRedirect(googleProvider)
-      .catch(console.log)
-  }
-  else if (provider === 'github') {
-    firebase.auth().signInWithRedirect(githubProvider)
-      .catch(console.log)
+  } else {
+    noUserFn && noUserFn();
   }
 })
 
