@@ -145,6 +145,10 @@ body {
   border-radius: 5px;
 }
 
+.logout {
+  float: right;
+}
+
 input {
   padding:5px; 
   border:2px solid #ccc; 
