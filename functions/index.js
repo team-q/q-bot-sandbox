@@ -8,12 +8,12 @@ admin.initializeApp();
 exports.processQuestion = functions.firestore.document('channel/{id}').onCreate(async(snap, context) => {
   const { slackId, messageId, channelId } = snap.data();
   console.log('snap.data(): ', snap.data());
-
+  
   const matches = await admin.firestore().collection('channel').where('messageId', '==', messageId).get()
+  
   if(matches.docs.length > 1) return admin.firestore().collection('channel').doc(context.params.id).delete();
   return req.get(`https://slack.com/api/users.info?token=${process.env.TOKEN}&user=${slackId}&pretty=1`)
     .then(res => {
-      console.log('line 16, slack get request "res.body:" ', res.body);
       return admin.firestore().collection('channel').doc(context.params.id).update({ name: res.body.user.real_name })
       .then(() => {
         return req.get(`https://slack.com/api/channels.info?token=${process.env.CHANNEL_TOKEN}&channel=${channelId}&pretty=1`)
