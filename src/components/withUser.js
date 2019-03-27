@@ -8,9 +8,13 @@ export const withUser = Component => {
     }
 
     componentDidMount() {
-      subscribe(user => {
+      this.unsubscribe = subscribe(user => {
         this.setState({ user })
       })
+    }
+
+    componentWillUnmount() {
+      this.unsubscribe && this.unsubscribe();
     }
 
     render() {

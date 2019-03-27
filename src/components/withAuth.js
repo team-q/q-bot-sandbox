@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Delay from 'react-delay';
-import firebase from 'firebase/app';
 import { addTA } from '../actions/questions';
+import { subscribe } from '../services/firebase';
 
 export const withAuth = WrappedComponent => {
   class WithAuthentication extends Component {
@@ -10,14 +10,16 @@ export const withAuth = WrappedComponent => {
     };
 
     componentDidMount() {
-      firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-          this.setState({ providerData: user.providerData });
-        } else {
-          console.info('Must be authenticated');
+      this.unsubscribe = subscribe(user => {
+        this.setState({ providerData: user.providerData });
+      }, () => {
+          alert('Must be authenticated!');
           this.props.history.replace('/');
-        }
-      });
+        })
+    }
+
+    componentWillUnmount() {
+      this.unsubscribe && this.unsubscribe();
     }
 
     handleClick = (id) => {
