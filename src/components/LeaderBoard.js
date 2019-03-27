@@ -12,7 +12,6 @@ export default class LeaderBoard extends PureComponent {
 
   handleDelete = (id) => {
     deleteTA(id);
-    console.log('TA deleted', id);
   }
 
   render() {

@@ -8,7 +8,6 @@ class Header extends PureComponent {
     this.props.history.replace('/');
   }
   handleSignOut = () => {
-    console.log('signed out');
     signOut();
   }
 
