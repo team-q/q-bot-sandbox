@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { subscribe } from '../services/firebase';
+import { subscribe, loginWithProvider } from '../services/firebase';
+import logo from '../assets/logo.png';
+import './Login.css';
 
 export default class Login extends Component {
   state = {
@@ -7,17 +9,27 @@ export default class Login extends Component {
   }
 
   componentDidUpdate() {
-    subscribe(user => {
-      console.log('logging in');
-    }, this.state.provider)
+    this.subscribeWithLogin();
   }
 
-  componentDidMount() {
-    subscribe(user => {
+  subscribeWithLogin() {
+    this.unsubscribe && this.unsubscribe();
+    this.unsubscribe = subscribe(user => {
       if(user) {
         this.props.history.replace('/questions');
       }
-    })
+    }, () => {
+      loginWithProvider(this.state.provider)
+        .catch(console.log)
+      })
+  }
+
+  componentDidMount() {
+    this.subscribeWithLogin()
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe && this.unsubscribe();
   }
 
   handleClick = ({ target }) => {
@@ -27,9 +39,29 @@ export default class Login extends Component {
   render() {
     return (
       <>
-        <h1>Q BOT LOGIN</h1>
-        <button name='google' value='google' onClick={this.handleClick}>Google</button>
-        <button name='github' value='github' onClick={this.handleClick}>GitHub</button>
+        <main>
+          <div className={'logo-div'}>
+            <img src={logo} alt="logo"/>
+            <h1>Q BOT</h1>
+          </div>
+          <br/>
+          <span>Sign in with:</span>
+          <br/>
+          <button className={'login-btn'}
+            name='google'
+            value='google'
+            onClick={this.handleClick}
+          >
+            Google
+          </button>
+          <button className={'login-btn'}
+            name='github'
+            value='github'
+            onClick={this.handleClick}
+          >
+            GitHub
+          </button>
+        </main>
       </>
     );
   }
