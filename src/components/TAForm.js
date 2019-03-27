@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export default function TAForm({ user, handleSubmit }) {
-  const [ name, setName ] = useState('')
+  const [ name ] = useState('')
   const [ cohort, setCohort ] = useState('')
     return (
       <>
