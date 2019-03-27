@@ -7,13 +7,11 @@ admin.initializeApp();
 
 exports.processQuestion = functions.firestore.document('channel/{id}').onCreate(async(snap, context) => {
   const { slackId, messageId } = snap.data();
-  console.log('snap.data(): ', snap.data());
-
   const matches = await admin.firestore().collection('channel').where('messageId', '==', messageId).get()
+  
   if(matches.docs.length > 1) return admin.firestore().collection('channel').doc(context.params.id).delete();
   return req.get(`https://slack.com/api/users.info?token=${process.env.TOKEN}&user=${slackId}&pretty=1`)
     .then(res => {
-      console.log('line 16, slack get request "res.body:" ', res.body);
       return admin.firestore().collection('channel').doc(context.params.id).update({ name: res.body.user.real_name })
     })
     .then(() => {
@@ -25,13 +23,12 @@ exports.processQuestion = functions.firestore.document('channel/{id}').onCreate(
 });
 
 exports.helloSlack = functions.https.onRequest((request, response) => {
-  console.log('request.body: ', request.body);
-      return admin.firestore().collection('channel').add({
-        messageId: request.body.event.client_msg_id,
-        name: '',
-        slackId: request.body.event.user,
-        question: request.body.event.text,
-        timestamp: request.body.event.ts
-      })
-        .then(() => response.status(200).send(request.body));
+  return admin.firestore().collection('channel').add({
+    messageId: request.body.event.client_msg_id,
+    name: '',
+    slackId: request.body.event.user,
+    question: request.body.event.text,
+    timestamp: request.body.event.ts
+  })
+    .then(() => response.status(200).send(request.body));
 });
