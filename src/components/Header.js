@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { signOut, auth } from '../services/firebase';
 import { withUser } from './withUser';
-import './Header.css';
+import './Header.scss';
 
 class Header extends PureComponent {
   componentDidUpdate() {
@@ -22,8 +22,8 @@ class Header extends PureComponent {
         <nav>
           <ul className={'ulStyles'}>
             <li><h1 className={'header'}>Q Bot</h1></li>
-            <li><Link to="/questions">Queue</Link></li>
-            <li><Link to="/leaderboard">Leaderboard</Link></li>
+            <li><Link className={'links'} to="/questions">Queue</Link></li>
+            <li><Link className={'links'} to="/leaderboard">Leaderboard</Link></li>
             <li className={'avatarWelcome'}>
               <img src={auth.currentUser.providerData[0].photoURL} alt="avatar" className={'avatar'} />
               <p className={'welcome'}>Welcome, {auth.currentUser.providerData[0].displayName.slice(0, space)}!</p>

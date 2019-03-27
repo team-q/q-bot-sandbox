@@ -14,13 +14,13 @@ $color_fuscous_gray: #555;
 $red: #f00;
 
 //imports
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 
 //header fonts
-$font_0: 'Roboto Mono';
+$font_0: 'Roboto';
 $font_1: monospace;
 //table font
-$font_2: Arial;
+$font_2: montserrat;
 
 
 .leaderTable {
@@ -31,6 +31,10 @@ $font_2: Arial;
 	color: $black;
 	border-radius: 10px;
 	box-shadow: 0 8px 6px -6px $black;
+}
+
+.addTaHeader {
+	font-family: $font_2;
 }
 
 .tableRow {
@@ -120,6 +124,7 @@ $font_2: Arial;
 		border: 2px solid $color_celeste;
 		border-radius: 5px;
 		margin-left: 10px;
+		font-family: $font_0;
 	}
 	label {
 		margin-left: 10px;
@@ -142,7 +147,6 @@ $font_2: Arial;
 		align-items: center;
 	}
 	label {
-		display: inherit;
 		margin-top: 1em;
 		margin-left: 0;
 		color: $color_fuscous_gray;

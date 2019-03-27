@@ -28,31 +28,36 @@ $color_fuscous_gray: #555;
 //fonts
 
 //imports
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 
 //header fonts
-$font_0: 'Roboto Mono';
+$font_0: 'Roboto';
 $font_1: monospace;
 //table font
-$font_2: Arial;
+$font_2: montserrat;
 
 
 // general styling
 body {
 	padding: 0 2em;
-	font-family: $font_2;
+	font-family: $font_0;
 	color: $color_storm_dust;
 	background: $concrete;
 }
 
 h1 {
-	font-family: $font_0, $font_1;
+	font-family: $font_2, $font_1;
 	font-weight: bold;
 	color: $color_sapphire;
 }
 
+button, select {
+	font-family: $font_2, $font_1;
+}
+
 .qBotTable {
 	margin: 1em 0;
+	margin-top: 2em;
 	width: 100%;
 	overflow: hidden;
 	background: $white;
@@ -155,6 +160,10 @@ h1 {
 
 	.tableData:nth-child(n + 3) {
 		display: none !important;
+	}
+
+	.sortLabel {
+		margin-left: 1em;
 	}
 
 	select {
