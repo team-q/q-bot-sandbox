@@ -30,6 +30,14 @@ exports.processQuestion = functions.firestore.document('channel/{id}').onCreate(
     })
 });
 
+exports.saveChannel = functions.firestore.document('channel/{id}').onCreate(async(snap, context) => {
+  const { channelId } = snap.data();
+  
+  const matches = await admin.firestore().collection('channel').where('channelId', '==', channelId).get()
+  if(matches.docs.length > 1) return admin.firestore().collection('channel').doc(context.params.id).delete();
+
+})
+
 exports.helloSlack = functions.https.onRequest((request, response) => {
   console.log('request.body: ', request.body);
       return admin.firestore().collection('channel').add({

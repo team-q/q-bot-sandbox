@@ -7,6 +7,7 @@ import Question from './Question';
 import FilterForm from './FilterForm';
 import SortForm from './SortForm';
 import { addClaim } from '../actions/questions';
+// import CohortSort from './CohortSort';
 
  export default function Questions({ providerData }) {
    const [filterValue, setFilterValue] = useState('')
