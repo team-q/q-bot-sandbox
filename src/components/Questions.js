@@ -5,10 +5,14 @@ import Header from './Header';
 import './Questions.css';
 import Question from './Question';
 import FilterForm from './FilterForm';
+import SortForm from './SortForm';
 
  export default function Questions({ handleClick }) {
    const [filterValue, setFilterValue] = useState('')
-   const channel = useFirestore(channelCollection.orderBy('timestamp', 'desc'), []).filter(c => {
+   const [sortValue, setSortValue] = useState('desc');
+
+   const channel = useFirestore(channelCollection.orderBy('timestamp', sortValue), [], sortValue)
+   .filter(c => {
       return c.question.includes(filterValue.toLowerCase()) || c.question.includes(filterValue.toUpperCase())
    })
 
@@ -38,6 +42,11 @@ import FilterForm from './FilterForm';
     { channel && 
       <>
         <FilterForm value={filterValue} onChange={({target}) => setFilterValue(target.value)}/>
+        
+        <SortForm value={sortValue} 
+          handleChange={({target}) => setSortValue(target.value)} 
+        />
+        
         <table className={'qBotTable'}>
           <thead>
             <tr>
