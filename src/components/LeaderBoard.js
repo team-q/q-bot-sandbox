@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import TAForm from './TAForm';
 import TAList from './TAList';
 import { addTA, deleteTA } from '../actions/TA';
-import './LeaderBoard.css';
+import './LeaderBoard.scss';
 import Header from './Header';
 // import { useState } from 'react';
 
