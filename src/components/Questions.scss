@@ -191,6 +191,10 @@ h1 {
 	.tableData:nth-child(n + 3) {
 		display: none !important;
 	}
+
+	select {
+		margin-left: 2em;
+	}
 }
 
 @media(min-width: 480px) {
