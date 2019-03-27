@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import TAForm from './TAForm';
 import TAList from './TAList';
 import { addTA, deleteTA } from '../actions/TA';
-import { taCollection, channelCollection } from '../services/firebase'
+import { taCollection, questionCollection } from '../services/firebase'
 import './LeaderBoard.scss';
 import Header from './Header';
 import CohortSort from './CohortSort';
@@ -28,7 +28,7 @@ export default class LeaderBoard extends PureComponent {
   }
 
   getCohorts = () => {
-    return channelCollection.get().then(snap => {
+    return questionCollection.get().then(snap => {
       return snap.docs.map(doc => {
         return doc.data().channelName;
       })

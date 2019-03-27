@@ -1,9 +1,9 @@
 import React from 'react';
-import { useFirestore } from './connectFirestore';
-import { channelCollection } from '../services/firebase';
+// import { useFirestore } from './connectFirestore';
+// import { channelCollection } from '../services/firebase';
 export default function CohortSort({ getCohorts }) {
-  const cohorts = useFirestore()
+  // const cohorts = useFirestore()
   return (
-
+    <h1>Hi</h1>
   )
 }
