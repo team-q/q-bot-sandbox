@@ -3,6 +3,7 @@ import TAForm from './TAForm';
 import TAList from './TAList';
 import { addTA, deleteTA } from '../actions/TA';
 import './LeaderBoard.css';
+import Header from './Header';
 // import { useState } from 'react';
 
 export default class LeaderBoard extends PureComponent {
@@ -22,6 +23,7 @@ export default class LeaderBoard extends PureComponent {
   render() {
     return (
       <>
+        <Header/>
         <TAForm handleSubmit={this.handleSubmit}/>
         <TAList handleDelete={this.handleDelete} />
       </>
