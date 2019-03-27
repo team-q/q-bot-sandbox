@@ -29,7 +29,6 @@ import { addClaim } from '../actions/questions';
     )
   })
 
-
   const headers = ['Name', 'Question', 'Timestamp', 'TA'];
   const headersList = headers.map((header, i) => {
     return (
