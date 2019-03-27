@@ -16,6 +16,8 @@ export const withAuth = WrappedComponent => {
         })
     }
 
+    
+
     componentWillUnmount() {
       this.unsubscribe && this.unsubscribe();
     }

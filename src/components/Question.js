@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 export default function Question({questionObj, handleClick}) {
   const { id, name, question, TA, timestamp } = questionObj;
