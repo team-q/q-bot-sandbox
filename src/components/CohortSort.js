@@ -17,8 +17,11 @@ export default function CohortSort({ onChange }) {
       )
     })
 
+    let cohortName = '';
+
   return (
-    <select onChange={onChange}>
+    <select onChange={onChange} defaultValue={cohortName}>
+      <option  disabled value=''>Select Cohort</option>
       {cohortsList}
     </select>
   )
