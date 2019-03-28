@@ -21,7 +21,7 @@ export default class LeaderBoard extends PureComponent {
   getTAs = () => {
     return taCollection.get().then(snap => {
       return snap.docs.map(doc => {
-        return console.log(doc.data().name)
+        return console.log(doc.data().name || 'User')
       })
     })
   }
