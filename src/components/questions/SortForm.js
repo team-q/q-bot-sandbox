@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function SortForm({ handleChange}) {
+export default function SortForm({ handleChange }) {
   return (
     <>
       <label className={'sortLabel'}>Sort By Timestamp:</label>
