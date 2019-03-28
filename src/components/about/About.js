@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './About.scss';
 import kristin from '../../assets/RoboDog.jpg';
 import paige from '../../assets/cakeIsALie.jpg';
@@ -38,6 +39,10 @@ export default function About() {
               <a href='https://www.github.com/caripizza' target='_blank' rel='noopener noreferrer'><img className={'github'} src={github} alt='github' /></a>
             </div>
           </div>
+
+          <br/>
+          <br/>
+          <Link to="/">Back</Link>
         </main>
       </>
     );
