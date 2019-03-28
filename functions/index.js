@@ -12,7 +12,7 @@ exports.processQuestion = functions.firestore.document('question/{id}').onCreate
   const matches = await admin.firestore().collection('question').where('messageId', '==', messageId).get()
   
   if(matches.docs.length > 1) return admin.firestore().collection('question').doc(context.params.id).delete();
-  return req.get(`https://slack.com/api/users.info?token=${process.env.TOKEN}&user=${slackId}&pretty=1`)
+  return req.get(`https://slack.com/api/users.info?token=${process.env.CHANNEL_TOKEN}&user=${slackId}&pretty=1`)
     .then(res => {
       return admin.firestore().collection('question').doc(context.params.id).update({ name: res.body.user.real_name })
       .then(() => {
@@ -30,13 +30,25 @@ exports.processQuestion = functions.firestore.document('question/{id}').onCreate
     })
 });
 
-exports.saveChannel = functions.firestore.document('question/{id}').onCreate(async(snap, context) => {
+exports.saveChannel = functions.firestore.document('question/{id}').onCreate(async(snap) => {
   const { channelId } = snap.data();
   
   const matches = await admin.firestore().collection('cohort').where('channelId', '==', channelId).get()
-  if(matches.docs.length > 1) return admin.firestore().collection('cohort').doc(context.params.id).delete();
-
-})
+  if(!matches.docs.length || matches.docs.length === 0) {
+    return admin.firestore().collection('cohort').add({ channelId })
+    .then(() => {
+        return req.get(`https://slack.com/api/channels.info?token=${process.env.CHANNEL_TOKEN}&channel=${channelId}&pretty=1`)
+          .then((res) => {
+            console.log(res.body.channel.id);
+            return admin.firestore().collection('cohort').where('channelId', '==', res.body.channel.id).get()
+              .then((matches) => {
+                console.log('DOCS', matches.docs); // snap doesnt work 
+                return admin.firestore().collection('cohort').doc(matches.docs[0].id).update({ channelName: res.body.channel.name })
+              })
+          })
+        })
+      }
+    })
 
 exports.helloSlack = functions.https.onRequest((request, response) => {
   console.log('request.body: ', request.body);
