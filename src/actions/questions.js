@@ -1,3 +1,3 @@
-import { channelCollection } from '../services/firebase';
+import { questionCollection } from '../services/firebase';
 
-export const addClaim = (ta, id) => channelCollection.doc(id).update({TA: ta})
+export const addClaim = (ta, id) => questionCollection.doc(id).update({TA: ta})

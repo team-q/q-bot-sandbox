@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
 import { useFirestore } from './connectFirestore';
-import { channelCollection } from '../services/firebase';
+import { questionCollection } from '../services/firebase';
 import Header from './Header';
 import './Questions.scss';
 import Question from './Question';
 import FilterForm from './FilterForm';
 import SortForm from './SortForm';
 import { addClaim } from '../actions/questions';
+// import CohortSort from './CohortSort';
 
  export default function Questions({ providerData }) {
    const [filterValue, setFilterValue] = useState('')
    const [sortValue, setSortValue] = useState('desc');
 
-   const channel = useFirestore(channelCollection.orderBy('timestamp', sortValue), [], sortValue)
+   const question = useFirestore(questionCollection.orderBy('timestamp', sortValue), [], sortValue)
    .filter(c => {
       return c.question.includes(filterValue.toLowerCase()) || c.question.includes(filterValue.toUpperCase())
    })
   const [taName] = useState(providerData[0].displayName);
 
-   const questionTableItems = channel && channel.map(doc => {
+   const questionTableItems = question && question.map(doc => {
     return (
       <Question 
         questionObj={doc} 
@@ -41,8 +42,8 @@ import { addClaim } from '../actions/questions';
    return (
     <>
     <Header />
-    {channel === null && <h1>Loading...</h1>}
-    { channel && 
+    {question === null && <h1>Loading...</h1>}
+    { question && 
       <>
         <FilterForm value={filterValue} onChange={({target}) => setFilterValue(target.value)}/>
         
