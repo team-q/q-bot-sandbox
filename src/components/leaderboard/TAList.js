@@ -1,6 +1,6 @@
 import React from 'react';
-import { useFirestore } from './connectFirestore';
-import { taCollection } from '../services/firebase';
+import { useFirestore } from '../connectFirestore';
+import { taCollection } from '../../services/firebase';
 import TA from './TA';
 
 export default function TAList({ handleDelete }) {

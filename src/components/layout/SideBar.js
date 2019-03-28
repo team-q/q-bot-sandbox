@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu';
-import { signOut } from '../services/firebase';
+import { signOut } from '../../services/firebase';
 
 const styles = {
   bmBurgerButton: {

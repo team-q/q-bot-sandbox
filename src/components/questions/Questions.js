@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useFirestore } from './connectFirestore';
-import { questionCollection } from '../services/firebase';
-import Header from './Header';
+import { useFirestore } from '../connectFirestore';
+import { questionCollection } from '../../services/firebase';
+import Header from '../layout/Header';
 import './Questions.scss';
 import Question from './Question';
 import FilterForm from './FilterForm';
 import SortForm from './SortForm';
-import { addClaim } from '../actions/questions';
+import { addClaim } from '../../actions/questions';
 // import CohortSort from './CohortSort';
 
  export default function Questions({ providerData }) {
