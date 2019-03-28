@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import CohortSort from '../CohortSort';
 
 export default function TAForm({ user, handleSubmit }) {
   const [ name ] = useState('')
@@ -14,17 +15,12 @@ export default function TAForm({ user, handleSubmit }) {
             value={user || 'User'} 
             disabled="disabled"
           />
-  
-          <label>Cohort</label>
-          <input 
-            type='text' 
-            name='cohort' 
-            value={cohort} 
-            onChange={({target}) => setCohort(target.value)}
-          />
+
+          <CohortSort onChange={({target}) => setCohort(target.value)} />
 
           <button className={'submit'} type="submit">Submit</button>
         </form>
+        
       </>
     );
 }
