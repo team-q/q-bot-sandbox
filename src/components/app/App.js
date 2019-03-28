@@ -5,10 +5,10 @@ import {
   Switch,
   Redirect
 } from 'react-router-dom';
-import Login from './components/Login';
-import LeaderBoard from './components/LeaderBoard';
-import Questions from './components/Questions';
-import {withAuth} from './components/withAuth';
+import Login from '../login/Login';
+import LeaderBoard from '../leaderboard/LeaderBoard';
+import Questions from '../questions/Questions';
+import {withAuth} from '../withAuth';
 
 class App extends Component {
   render() {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { subscribe, loginWithProvider } from '../services/firebase';
-import logo from '../assets/logo.png';
+import { subscribe, loginWithProvider } from '../../services/firebase';
+import logo from '../../assets/logo.png';
 import './Login.css';
 
 export default class Login extends Component {

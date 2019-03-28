@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 
-import { signOut, auth } from '../services/firebase';
-import { withUser } from './withUser';
+import { signOut, auth } from '../../services/firebase';
+import { withUser } from '../withUser';
 import SideBar from './SideBar';
 import './Header.scss';
 
