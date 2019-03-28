@@ -15,8 +15,7 @@ export default function TAForm({ user, handleSubmit }) {
             value={user || 'User'} 
             disabled="disabled"
           />
-  
-          <label>Cohort</label>
+
           <CohortSort onChange={({target}) => setCohort(target.value)} />
 
           <button className={'submit'} type="submit">Submit</button>

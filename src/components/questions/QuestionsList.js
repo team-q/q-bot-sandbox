@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Header from '../layout/Header';
 import './Questions.scss';
 import Question from './Question';
 import { addClaim } from '../../actions/questions';
@@ -29,7 +28,6 @@ import { addClaim } from '../../actions/questions';
 
    return (
     <>
-    <Header />
     {questions === null && <h1>Loading...</h1>}
     { questions && 
       <>

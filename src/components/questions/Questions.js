@@ -6,6 +6,7 @@ import FilterForm from './FilterForm';
 import SortForm from './SortForm';
 import CohortSort from '../CohortSort';
 import ClaimSort from '../ClaimSort';
+import Header from '../layout/Header';
 
 const filterClaimed = {
   claimed(TA) {
@@ -25,13 +26,14 @@ const filterClaimed = {
    const [cohortSortValue, setCohortSortValue] = useState('')
    const [claimSortValue, setClaimSortValue] = useState('both')
   
-   const question = useFirestore(questionCollection.orderBy('timestamp', sortValue), [], sortValue, cohortSortValue, claimSortValue)
+   const questions = useFirestore(questionCollection.orderBy('timestamp', sortValue), [], sortValue, cohortSortValue, claimSortValue)
    .filter(c => {
       return (c.question.includes(filterValue.toLowerCase()) || c.question.includes(filterValue.toUpperCase())) && c.channelName.includes(cohortSortValue) && filterClaimed[claimSortValue](c.TA)
    })
 
   return (
     <>
+      <Header/>
       <FilterForm value={filterValue} onChange={({target}) => setFilterValue(target.value)}/>
       <SortForm handleChange={({target}) => setSortValue(target.value)} />
       <CohortSort onChange={({target}) => {setCohortSortValue(target.value)}} />
