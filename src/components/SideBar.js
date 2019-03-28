@@ -6,10 +6,10 @@ import { signOut } from '../services/firebase';
 const styles = {
   bmBurgerButton: {
     position: 'absolute',
-    width: '36px',
-    height: '30px',
-    right: '36px',
-    top: '1.35em'
+    width: '2.3em',
+    height: '1.7em',
+    right: '2.5em',
+    top: '1.5em'
   },
   bmBurgerBars: {
     background: '#373a47'
@@ -18,8 +18,9 @@ const styles = {
     background: '#a90000'
   },
   bmCrossButton: {
-    height: '24px',
-    width: '24px'
+    height: '1.5em',
+    width: '1.5em',
+    marginRight: '.7em'
   },
   bmCross: {
     background: '#bdc3c7'
@@ -32,14 +33,16 @@ const styles = {
   bmMenu: {
     background: '#39499B',
     padding: '2.5em 1.5em 0 0',
-    fontSize: '1.15em'
+    fontSize: '1.15em',
+    marginRight: '.45em',
+    marginLeft: '-.45em'
   },
   bmMorphShape: {
     fill: '#373a47'
   },
   bmItemList: {
     color: '#b8b7ad',
-    padding: '0 2em'
+    padding: '0 0 0 20%'
   },
   bmItem: {
     display: 'inline-flex'
@@ -54,11 +57,11 @@ export default class SideBar extends React.Component {
     menuOpen: false
   };
 
-   handleStateChange(state) {
+  handleStateChange(state) {
     this.setState({ menuOpen: state.isOpen });
   }
 
-   closeMenu() {
+  closeMenu() {
     this.setState({ menuOpen: false });
   }
 
@@ -66,7 +69,7 @@ export default class SideBar extends React.Component {
     signOut();
   }
 
-   render() {
+  render() {
     return (
       <>
         <Menu styles={styles} width={ '50%' }
