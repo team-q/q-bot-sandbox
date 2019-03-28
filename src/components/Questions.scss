@@ -202,3 +202,10 @@ button, select {
 		}
 	}
 }
+
+@media screen and (max-width: 667px) {
+  .logout {
+		float: left;
+		margin: 0 auto;
+  }
+}

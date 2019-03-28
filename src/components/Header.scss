@@ -14,7 +14,6 @@ $font_1: Roboto;
 .headerStyles {
 	border-bottom: 2px solid $color_sapphire;
 	width: 100%;
-	margin: 0 0 2em 0;
 }
 .ulStyles {
 	list-style: none;
@@ -24,10 +23,12 @@ $font_1: Roboto;
 	align-items: center;
 	margin: 0;
 	padding: 0;
+	width: 80%;
+	float: right;
 }
 .avatar {
 	border-radius: 50%;
-	width: 4em;
+	width: 3.25em;
 }
 .header {
 	font-size: 3em;
@@ -36,6 +37,9 @@ $font_1: Roboto;
 .welcome {
 	display: inline-block;
 	font-family: $font_1;
+}
+p.welcome {
+	margin: 0;
 }
 .links {
 	font-family: $font_1;
@@ -54,4 +58,35 @@ $font_1: Roboto;
 
 .addFilterHeader {
 	font-family: $font_0;
+}
+
+body {
+	margin-top: 0;
+}
+
+nav h1 {
+	margin: 0 0 .3em 0;
+	padding-top: .2em;
+	width: 3em;
+}
+
+nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+@media screen and (max-width: 667px) {
+  .header {
+    margin: 0 0 .3em 0;
+	}
+	
+	nav h1 {
+		padding-top: .2em;
+		width: 60%;
+	}
+
+	nav {
+		display: block;
+	}
 }
