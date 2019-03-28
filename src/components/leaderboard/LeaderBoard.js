@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react';
-import TAForm from './TAForm';
-import TAList from './TAList';
 import { addTA, deleteTA } from '../../actions/TA';
 import { taCollection, questionCollection } from '../../services/firebase'
+
 import './LeaderBoard.scss';
+import TAForm from './TAForm';
+import TAList from './TAList';
 import Header from '../layout/Header';
 
 export default class LeaderBoard extends PureComponent {
