@@ -1,10 +1,12 @@
 import React, { PureComponent } from 'react';
-import TAForm from './TAForm';
-import TAList from './TAList';
 import { addTA, deleteTA } from '../../actions/TA';
 import { taCollection, questionCollection } from '../../services/firebase'
+
 import './LeaderBoard.scss';
+import TAForm from './TAForm';
+import TAList from './TAList';
 import Header from '../layout/Header';
+import CohortSort from '../CohortSort';
 
 export default class LeaderBoard extends PureComponent {
   
@@ -43,6 +45,7 @@ export default class LeaderBoard extends PureComponent {
     return (
       <>
         <Header/>
+        <CohortSort />
         <TAForm 
           user={this.props.providerData[0].displayName} 
           handleSubmit={this.handleSubmit}
