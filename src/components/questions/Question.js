@@ -1,18 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { addSolved } from '../../actions/questions';
-// import { useFirestore } from '../connectFirestore';
-// import { questionCollection } from '../../services/firebase';
 
 export default function Question({questionObj, handleClick}) {
-  const { id, name, question, TA, timestamp } = questionObj;
+  const { id, name, question, TA, timestamp, solved = false } = questionObj;
   const date = new Date(timestamp * 1000);
   const quest = question.split('> ')[1];
 
-  const [solvedValue, setSolvedValue] = useState(false);
-  // const newSolvedValue = useFirestore(questionCollection.doc(id).update({ Solved: true }), {}, solvedValue);
-
   return (
-    <tr key={id} className={'tableRow'}>
+    <tr key={id} className={solved === true ? 'tableRow solvedTrue' : 'tableRow'}>
       <td className={'tableData'}>{name}</td>
       <td className={'tableData'}>{quest}</td>
       <td className={'tableData'}>{date.toLocaleString().split(',').join('')}</td>
@@ -24,15 +19,14 @@ export default function Question({questionObj, handleClick}) {
         </button>
       </td>
       <td className={'tableData'} id={'solvedColumn'}>
-        <input type='checkbox' name='solvedValue' checked={solvedValue}
-          value={solvedValue}
+        <input type='checkbox' name='solvedValue' 
+          checked={solved}
+          value={solved}
           onChange={({ target }) => {
-            setSolvedValue(target.value)
-            
+            addSolved(target.checked, id)
             }
           }
         />
-        <span>{solvedValue}</span>
       </td>
     </tr>
   )
