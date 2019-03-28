@@ -14,152 +14,156 @@ $color_fuscous_gray: #555;
 $red: #f00;
 
 //imports
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 
 //header fonts
-$font_0: 'Roboto Mono';
+$font_0: 'Roboto';
 $font_1: monospace;
 //table font
-$font_2: Arial;
+$font_2: montserrat;
 
 
 .leaderTable {
-	margin: 1em 0;
-	width: 100%;
-	overflow: hidden;
-	background: $white;
-	color: $black;
-	border-radius: 10px;
-	box-shadow: 0 8px 6px -6px $black;
+  margin: 1em 0;
+  width: 100%;
+  overflow: hidden;
+  background: $white;
+  color: $black;
+  border-radius: 10px;
+  box-shadow: 0 8px 6px -6px $black;
+}
+
+.addTaHeader {
+  font-family: $font_2;
 }
 
 .tableRow {
-	border: 1px solid $color_geyser;
-	&:hover {
-		background-color: $color_titan_white;
-	}
+  border: 1px solid $color_geyser;
+  &:hover {
+    background-color: $color_titan_white;
+  }
 }
 
 .tableHeader {
-	display: none;
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
-	border: 1px solid $white;
-	background-color: $color_sapphire;
-	color: $white;
-	padding: 1em;
-	text-align: left;
-	margin: .5em 1em;
-	&:first-child {
-		display: table-cell;
-		text-align: center;
-	}
-	&:nth-child(2) {
-		display: table-cell;
-		text-align: center;
-		span {
-			display: none;
-		}
-		&:after {
-			content: attr(data-th);
-		}
-	}
-	&:nth-child(3) {
-		text-align: center;
-	}
+  display: none;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border: 1px solid $white;
+  background-color: $color_sapphire;
+  color: $white;
+  padding: 1em;
+  text-align: left;
+  margin: .5em 1em;
+  &:first-child {
+    display: table-cell;
+    text-align: center;
+  }
+  &:nth-child(2) {
+    display: table-cell;
+    text-align: center;
+    span {
+      display: none;
+    }
+    &:after {
+      content: attr(data-th);
+    }
+  }
+  &:nth-child(3) {
+    text-align: center;
+  }
 }
 
 .tableData {
-	display: block;
-	word-wrap: break-word;
-	max-width: 7em;
-	text-align: left;
-	margin: .5em 1em;
-	&:first-child {
-		display: table-cell;
-		text-align: center;
-	}
+  display: block;
+  word-wrap: break-word;
+  max-width: 7em;
+  text-align: left;
+  margin: .5em 1em;
+  &:first-child {
+    display: table-cell;
+    text-align: center;
+  }
 }
 
 .taDeleteButton {
-	display: flex;
-	margin: 0 auto;
-	background: transparent;
-	border: 1px solid $red;
-	border-radius: 2em;
-	color: $red;
-	font-size: 12px;
-	height: 2em;
-	width: 2em;
-	cursor: pointer;
+  display: flex;
+  margin: 0 auto;
+  background: transparent;
+  border: 1px solid $red;
+  border-radius: 2em;
+  color: $red;
+  font-size: 12px;
+  height: 2em;
+  width: 2em;
+  cursor: pointer;
 }
 .submit {
-	padding: 5px 15px;
-	border: 2px solid $color_celeste;
-	margin-left: 10px;
-	cursor: pointer;
-	border-radius: 5px;
+  padding: 5px 15px;
+  border: 2px solid $color_celeste;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 //mobile styles
 @media(min-width: 480px) {
-	.tableHeader {
-		display: table-cell;
-		padding: 1em;
-		&:nth-child(2) {
-			span {
-				display: block;
-			}
-			&:after {
-				display: none;
-			}
-		}
-	}
-	input {
-		padding: 5px;
-		border: 2px solid $color_celeste;
-		border-radius: 5px;
-		margin-left: 10px;
-	}
-	label {
-		margin-left: 10px;
-		color: $color_fuscous_gray;
-	}
-	select {
-		margin-left: 1em;
-	}
-	.tableData {
-		border: 1px solid $color_geyser;
-		display: table-cell;
-		padding: 1em;
-	}
+  .tableHeader {
+    display: table-cell;
+    padding: 1em;
+    &:nth-child(2) {
+      span {
+        display: block;
+      }
+      &:after {
+        display: none;
+      }
+    }
+  }
+  input {
+    padding: 5px;
+    border: 2px solid $color_celeste;
+    border-radius: 5px;
+    margin-left: 10px;
+    font-family: $font_0;
+  }
+  label {
+    margin-left: 10px;
+    color: $color_fuscous_gray;
+  }
+  select {
+    margin-left: 1em;
+  }
+  .tableData {
+    border: 1px solid $color_geyser;
+    display: table-cell;
+    padding: 1em;
+  }
 }
 
 @media(max-width: 480px) {
-	.taForm {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-	label {
-		display: inherit;
-		margin-top: 1em;
-		margin-left: 0;
-		color: $color_fuscous_gray;
-	}
-	input {
-		margin-left: 0;
-		padding: 5px;
-		border: 2px solid $color_celeste;
-		border-radius: 5px;
-	}
-	.submit {
-		width: 25%;
-		align-self: center;
-		margin-top: 1em;
-		margin-left: 0;
-	}
-	h2 {
-		text-align: center;
-	}
+  .taForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  label {
+    margin-top: 1em;
+    margin-left: 0;
+    color: $color_fuscous_gray;
+  }
+  input {
+    margin-left: 0;
+    padding: 5px;
+    border: 2px solid $color_celeste;
+    border-radius: 5px;
+  }
+  .submit {
+    width: 25%;
+    align-self: center;
+    margin-top: 1em;
+    margin-left: 0;
+  }
+  h2 {
+    text-align: center;
+  }
 }

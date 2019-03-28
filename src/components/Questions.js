@@ -49,7 +49,7 @@ import { addClaim } from '../actions/questions';
         <SortForm value={sortValue} 
           handleChange={({target}) => setSortValue(target.value)} 
         />
-        
+        <h1>TA Queue</h1>
         <table className={'qBotTable'}>
           <thead>
             <tr>

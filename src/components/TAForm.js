@@ -5,7 +5,7 @@ export default function TAForm({ user, handleSubmit }) {
   const [ cohort, setCohort ] = useState('')
     return (
       <>
-        <h2>Add New TA</h2>
+        <h2 className={'addTaHeader'}>Add New TA</h2>
         <form id='taForm' className={'taForm'} onSubmit={handleSubmit.bind(this, name, cohort)}>
           <label>TA Name</label>
           <input 

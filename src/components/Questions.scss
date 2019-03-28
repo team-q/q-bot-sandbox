@@ -28,168 +28,183 @@ $color_fuscous_gray: #555;
 //fonts
 
 //imports
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 
 //header fonts
-$font_0: 'Roboto Mono';
+$font_0: 'Roboto';
 $font_1: monospace;
 //table font
-$font_2: Arial;
+$font_2: montserrat;
 
 
 // general styling
 body {
-	padding: 0 2em;
-	font-family: $font_2;
-	color: $color_storm_dust;
-	background: $concrete;
+  padding: 0 2em;
+  font-family: $font_0;
+  color: $color_storm_dust;
+  background: $concrete;
 }
 
 h1 {
-	font-family: $font_0, $font_1;
-	font-weight: bold;
-	color: $color_sapphire;
+  font-family: $font_2, $font_1;
+  font-weight: bold;
+  color: $color_sapphire;
+}
+
+button, select {
+  font-family: $font_2, $font_1;
 }
 
 .qBotTable {
-	margin: 1em 0;
-	width: 100%;
-	overflow: hidden;
-	background: $white;
-	color: $black;
-	border-radius: 10px;
-	box-shadow: 0 8px 6px -6px $black;
+  margin: 1em 0;
+  margin-top: 2em;
+  width: 100%;
+  overflow: hidden;
+  background: $white;
+  color: $black;
+  border-radius: 10px;
+  box-shadow: 0 8px 6px -6px $black;
 }
 
 .tableRow {
-	border: 1px solid $color_geyser;
-	&:hover {
-		background-color: $color_titan_white;
-	}
+  border: 1px solid $color_geyser;
+  &:hover {
+    background-color: $color_titan_white;
+  }
 }
 
 .tableHeader {
-	display: table-cell;
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
-	border: 1px solid $white;
-	background-color: $color_sapphire;
-	color: $white;
-	padding: 1em;
-	text-align: left;
-	margin: .5em 1em;
-	&:first-child {
-		display: table-cell;
-		text-align: center;
-	}
-	&:nth-child(2) {
-		display: table-cell;
-		text-align: center;
-		span {
-			display: none;
-		}
-		&:after {
-			content: attr(data-th);
-		}
-	}
-	&:nth-child(3) {
-		display: table-cell;
-		text-align: center;
-	}
-	&:nth-child(4) {
-		display: table-cell;
-		text-align: center;
-	}
+  display: table-cell;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border: 1px solid $white;
+  background-color: $color_sapphire;
+  color: $white;
+  padding: 1em;
+  text-align: left;
+  margin: .5em 1em;
+  &:first-child {
+    display: table-cell;
+    text-align: center;
+  }
+  &:nth-child(2) {
+    display: table-cell;
+    text-align: center;
+    span {
+      display: none;
+    }
+    &:after {
+      content: attr(data-th);
+    }
+  }
+  &:nth-child(3) {
+    display: table-cell;
+    text-align: center;
+  }
+  &:nth-child(4) {
+    display: table-cell;
+    text-align: center;
+  }
 }
 
 .tableData {
-	word-wrap: break-word;
-	max-width: 7em;
-	text-align: left;
-	margin: .5em 1em;
-	&:first-child {
-		display: table-cell;
-		text-align: center;
-	}
+  word-wrap: break-word;
+  max-width: 7em;
+  text-align: left;
+  margin: .5em 1em;
+  &:first-child {
+    display: table-cell;
+    text-align: center;
+  }
 }
 
 .taButtonActive {
-	float: right;
-	background-color: $color_lime;
-	border-radius: 50%;
-	width: 2.5em;
-	height: 2.5em;
-	box-shadow: $black_20 0 -1px 7px 1px, inset $color_clover 0 -1px 9px, $color_chartreuse 0 2px 12px;
-	&:hover {
-		background-color: $color_christi;
-	}
+  float: right;
+  background-color: $color_lime;
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  box-shadow: $black_20 0 -1px 7px 1px, inset $color_clover 0 -1px 9px, $color_chartreuse 0 2px 12px;
+  &:hover {
+    background-color: $color_christi;
+  }
 }
 
 .taButton {
-	float: right;
-	background-color: $red;
-	border-radius: 50%;
-	width: 2.5em;
-	height: 2.5em;
-	box-shadow: $black_20 0 -1px 7px 1px, inset $color_van_cleef 0 -1px 9px, $red_50 0 2px 12px;
-	&:hover {
-		background-color: $color_bright_red;
-	}
+  float: right;
+  background-color: $red;
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  box-shadow: $black_20 0 -1px 7px 1px, inset $color_van_cleef 0 -1px 9px, $red_50 0 2px 12px;
+  &:hover {
+    background-color: $color_bright_red;
+  }
 }
 
 .logout {
-	padding: 5px 15px;
-	border: 2px solid $color_celeste;
-	margin-left: 10px;
-	cursor: pointer;
-	border-radius: 5px;
-	float: right;
+  padding: 5px 15px;
+  border: 2px solid $color_celeste;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  float: right;
 }
 
 
 //mobile styling
 @media(max-width: 480px) {
-	.tableHeader:nth-child(n + 3) {
-		display: none !important;
-	}
+  .tableHeader:nth-child(n + 3) {
+    display: none !important;
+  }
 
-	.tableData:nth-child(n + 3) {
-		display: none !important;
-	}
+  .tableData:nth-child(n + 3) {
+    display: none !important;
+  }
 
-	select {
-		margin-left: 2em;
-	}
+  .sortLabel {
+    margin-left: 1em;
+  }
 
-	label {
-		margin-bottom: 1em;
-	}
+  select {
+    margin-left: 2em;
+  }
+
+  label {
+    margin-bottom: 1em;
+  }
 }
 
 @media(min-width: 480px) {
-	.tableHeader {
-		display: table-cell;
-		padding: 1em;
-		&:nth-child(2) {
-			span {
-				display: block;
-			}
-			&:after {
-				display: none;
-			}
-		}
-	}
-	.tableData {
-		border: 1px solid $color_geyser;
-		display: table-cell;
-		padding: 1em;
-	}
-	&:nth-child(2) {
-		span {
-			display: block;
-		}
-		&:after {
-			display: none;
-		}
-	}
+  .tableHeader {
+    display: table-cell;
+    padding: 1em;
+    &:nth-child(2) {
+      span {
+        display: block;
+      }
+      &:after {
+        display: none;
+      }
+    }
+  }
+  .tableData {
+    border: 1px solid $color_geyser;
+    display: table-cell;
+    padding: 1em;
+  }
+  &:nth-child(2) {
+    span {
+      display: block;
+    }
+    &:after {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 667px) {
+  .logout {
+    margin-left: 0px;
+  }
 }
