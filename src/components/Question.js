@@ -11,7 +11,7 @@ export default function Question({questionObj, handleClick}) {
       <td className={'tableData'}>{quest}</td>
       <td className={'tableData'}>{date.toLocaleString().split(',').join('')}</td>
       <td className={'tableData'}>
-        {TA}
+        {TA || 'User'}
         <button 
           onClick={handleClick.bind(null, id)} 
           className={'taButton' + (TA !== undefined ? 'Active' : '')}>

@@ -28,7 +28,11 @@ class Header extends PureComponent {
   }
 
   render() {
-    const space = auth.currentUser.providerData[0].displayName.indexOf(' ');
+    const profileImg = auth.currentUser.providerData[0].photoURL;
+    const profileName = auth.currentUser.providerData[0].displayName;
+    const profileNameSpace = profileName !== null && profileName.includes(' ');
+    const space = profileNameSpace && profileName.indexOf(' ');
+    const trimmedName = profileNameSpace ? profileName.slice(0, space) : 'User';
     const { width } = this.state;
     const isMobile = width <= 667;
 
@@ -44,9 +48,9 @@ class Header extends PureComponent {
               <li><Link to="/questions" className={'links'}>Queue</Link></li>
               <li><Link to="/leaderboard" className={'links'}>Leaderboard</Link></li>
               <li className={'avatarWelcome'}>
-                <img src={auth.currentUser.providerData[0].photoURL} alt="avatar" className={'avatar'} />
+                <img src={profileImg ? profileImg : null} alt="avatar" className={'avatar'} />
                 <p className={'welcome'}>
-                  Welcome, {auth.currentUser.providerData[0].displayName.slice(0, space)}!
+                  Welcome, {trimmedName}!
                 </p>
               </li>
               <li>

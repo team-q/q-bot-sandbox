@@ -11,7 +11,7 @@ export default function TAForm({ user, handleSubmit }) {
           <input 
             type='text' 
             name='name' 
-            value={user} 
+            value={user || 'User'} 
             disabled="disabled"
           />
   
