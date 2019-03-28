@@ -14,7 +14,7 @@ export default function Question({questionObj, handleClick}) {
     <tr key={id} className={'tableRow'}>
       <td className={'tableData'}>{name}</td>
       <td className={'tableData'}>{quest}</td>
-      <td className={'tableData'}><p>{date.toLocaleString().split(',').join('')}</p> Waiting: {waitTime}</td>
+      <td className={'tableData'}><p>{date.toLocaleString().split(',').join('')}</p> <span className={(TA !== undefined ? 'Solved' : '')}>Waiting: {waitTime}</span></td>
       <td className={'tableData'}>
         {TA}
         <button 
