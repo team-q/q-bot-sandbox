@@ -2,10 +2,11 @@ import React from 'react';
 import { useFirestore } from '../connectFirestore';
 import { taCollection } from '../../services/firebase';
 import TA from './TA';
+import Claim from './Claim';
 
 export default function TAList({ handleDelete }) {
-  const question = useFirestore(taCollection, [])
-  const list = question.map(doc => {
+  const taCollectionList = useFirestore(taCollection, [])
+  const list = taCollectionList.map(doc => {
     return <TA handleDelete={handleDelete} key={doc.id} id={doc.id} name={doc.name} cohort={doc.cohort} />
   })
   return (
@@ -24,6 +25,7 @@ export default function TAList({ handleDelete }) {
           {list}
         </tbody>
       </table>
+      <Claim taCollectionList={taCollectionList} />
     </>
   );
 }
