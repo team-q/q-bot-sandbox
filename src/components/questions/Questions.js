@@ -1,26 +1,41 @@
 import React, { useState } from 'react';
+import { useFirestore } from '../connectFirestore';
+import { questionCollection } from '../../services/firebase';
+import QuestionsList from './QuestionsList';
 import FilterForm from './FilterForm';
 import SortForm from './SortForm';
 import CohortSort from '../CohortSort';
-import QuestionsList from './QuestionsList'
-import { useFirestore } from '../connectFirestore';
-import { questionCollection } from '../../services/firebase';
+import ClaimSort from '../ClaimSort';
 
-export default function Questions({ providerData }) {
-  const [filterValue, setFilterValue] = useState('')
-  const [sortValue, setSortValue] = useState('desc');
-  const [cohortSortValue, setCohortSortValue] = useState('')
+const filterClaimed = {
+  claimed(TA) {
+    return TA
+  },
+  unclaimed(TA) {
+    return !TA
+  },
+  both(TA) {
+    return true
+  }
+}
 
-  const questions = useFirestore(questionCollection.orderBy('timestamp', sortValue), [], sortValue, cohortSortValue)
-  .filter(c => {
-     return (c.question.includes(filterValue.toLowerCase()) || c.question.includes(filterValue.toUpperCase())) && c.channelName.includes(cohortSortValue)
-  })
+ export default function Questions({ providerData }) {
+   const [filterValue, setFilterValue] = useState('')
+   const [sortValue, setSortValue] = useState('desc');
+   const [cohortSortValue, setCohortSortValue] = useState('')
+   const [claimSortValue, setClaimSortValue] = useState('both')
+  
+   const question = useFirestore(questionCollection.orderBy('timestamp', sortValue), [], sortValue, cohortSortValue, claimSortValue)
+   .filter(c => {
+      return (c.question.includes(filterValue.toLowerCase()) || c.question.includes(filterValue.toUpperCase())) && c.channelName.includes(cohortSortValue) && filterClaimed[claimSortValue](c.TA)
+   })
 
   return (
     <>
       <FilterForm value={filterValue} onChange={({target}) => setFilterValue(target.value)}/>
       <SortForm handleChange={({target}) => setSortValue(target.value)} />
       <CohortSort onChange={({target}) => {setCohortSortValue(target.value)}} />
+      <ClaimSort onChange={({target}) => {setClaimSortValue(target.value)}} />
       <QuestionsList 
         questions={questions}
         providerData={providerData}
