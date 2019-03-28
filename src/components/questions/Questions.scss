@@ -201,6 +201,14 @@ button, select {
 			display: none;
 		}
 	}
+
+	#solvedColumn {
+		width: .5em;
+	}
+
+	.solvedTrue {
+		text-decoration: line-through;
+	}
 }
 
 @media screen and (max-width: 667px) {

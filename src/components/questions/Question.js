@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { addSolved } from '../../actions/questions';
+// import { useFirestore } from '../connectFirestore';
+// import { questionCollection } from '../../services/firebase';
 
 export default function Question({questionObj, handleClick}) {
   const { id, name, question, TA, timestamp } = questionObj;
   const date = new Date(timestamp * 1000);
   const quest = question.split('> ')[1];
+
+  const [solvedValue, setSolvedValue] = useState(false);
+  // const newSolvedValue = useFirestore(questionCollection.doc(id).update({ Solved: true }), {}, solvedValue);
 
   return (
     <tr key={id} className={'tableRow'}>
@@ -16,6 +22,17 @@ export default function Question({questionObj, handleClick}) {
           onClick={handleClick.bind(null, id)} 
           className={'taButton' + (TA !== undefined ? 'Active' : '')}>
         </button>
+      </td>
+      <td className={'tableData'} id={'solvedColumn'}>
+        <input type='checkbox' name='solvedValue' checked={solvedValue}
+          value={solvedValue}
+          onChange={({ target }) => {
+            setSolvedValue(target.value)
+            
+            }
+          }
+        />
+        <span>{solvedValue}</span>
       </td>
     </tr>
   )

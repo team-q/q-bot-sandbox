@@ -30,7 +30,7 @@ import { addClaim } from '../../actions/questions';
     )
   })
 
-  const headers = ['Name', 'Question', 'Timestamp', 'TA'];
+  const headers = ['Name', 'Question', 'Timestamp', 'TA', 'Solved'];
   const headersList = headers.map((header, i) => {
     return (
       <th className={'tableHeader'} key={i}>
