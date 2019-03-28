@@ -1,12 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 
 main {
   text-align: center;
-  font-family: 'Roboto Mono', monospace;
+  font-family: monserrat;
+  margin-top: 6em;
 }
 
 .login-btn {
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'Roboto';
   border: none;
   border-radius: .51em;
   height: 2.3em;
