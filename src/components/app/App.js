@@ -8,6 +8,7 @@ import {
 import Login from '../login/Login';
 import LeaderBoard from '../leaderboard/LeaderBoard';
 import Questions from '../questions/Questions';
+import About from '../about/About';
 import {withAuth} from '../withAuth';
 
 class App extends Component {
@@ -18,6 +19,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={Login} />
             <Route exact path='/questions' component={withAuth(Questions)} />
+            <Route exact path='/about' component={About} />
             <Route exact path='/leaderboard' component={withAuth(LeaderBoard)} />
             <Redirect to='/questions'/>
           </Switch>

@@ -1,0 +1,23 @@
+.aboutImages {
+  border-radius: 50%;
+  height: 8em;
+  width: 8em;
+  margin: 0 3em;
+}
+
+.aboutWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+}
+
+.imageWrapper {
+  display: flex;
+  margin-top: 2em;
+}
+
+.github {
+  height: 2em;
+  width: 2em;
+}
