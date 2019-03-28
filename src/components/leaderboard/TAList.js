@@ -4,10 +4,11 @@ import { taCollection } from '../../services/firebase';
 import TA from './TA';
 
 export default function TAList({ handleDelete }) {
-  const taCollectionList = useFirestore(taCollection, [])
+  const taCollectionList = useFirestore(taCollection.orderBy('claimCount', 'desc'), [])
   const list = taCollectionList.map(doc => {
     return <TA handleDelete={handleDelete} key={doc.id} id={doc.id} name={doc.name} cohort={doc.cohort} />
   })
+  
   return (
     <>
       <h1>TA Leader Board</h1>

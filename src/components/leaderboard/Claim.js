@@ -10,7 +10,7 @@ export default function Claim({ name, id }) {
     const claimsLength = claims.length;
     updateClaim(claimsLength, id)
     return (
-      <h1>{claims.length}</h1>
+      <p>{claims.length}</p>
     )
   }
 }
