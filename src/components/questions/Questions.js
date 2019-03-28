@@ -2,22 +2,36 @@ import React, { useState } from 'react';
 import { useFirestore } from '../connectFirestore';
 import { questionCollection } from '../../services/firebase';
 import Header from '../layout/Header';
-import './Questions.scss';
 import Question from './Question';
 import FilterForm from './FilterForm';
 import SortForm from './SortForm';
 import { addClaim } from '../../actions/questions';
 import CohortSort from '../CohortSort';
+import ClaimSort from '../ClaimSort';
+import './Questions.scss';
+
+const filterClaimed = {
+  claimed(TA) {
+    return TA
+  },
+  unclaimed(TA) {
+    return !TA
+  },
+  both(TA) {
+    return true
+  }
+}
 
  export default function Questions({ providerData }) {
    const [filterValue, setFilterValue] = useState('')
    const [sortValue, setSortValue] = useState('desc');
    const [cohortSortValue, setCohortSortValue] = useState('')
+   const [claimSortValue, setClaimSortValue] = useState('both')
    const [taName] = useState(providerData[0].displayName);
-
-   const question = useFirestore(questionCollection.orderBy('timestamp', sortValue), [], sortValue, cohortSortValue)
+   
+   const question = useFirestore(questionCollection.orderBy('timestamp', sortValue), [], sortValue, cohortSortValue, claimSortValue)
    .filter(c => {
-      return (c.question.includes(filterValue.toLowerCase()) || c.question.includes(filterValue.toUpperCase())) && c.channelName.includes(cohortSortValue)
+      return (c.question.includes(filterValue.toLowerCase()) || c.question.includes(filterValue.toUpperCase())) && c.channelName.includes(cohortSortValue) && filterClaimed[claimSortValue](c.TA)
    })
    
    const questionTableItems = question && question.map(doc => {
@@ -51,6 +65,8 @@ import CohortSort from '../CohortSort';
         <SortForm handleChange={({target}) => setSortValue(target.value)} />
 
         <CohortSort onChange={({target}) => {setCohortSortValue(target.value)}} />
+
+        <ClaimSort onChange={({target}) => {setClaimSortValue(target.value)}} />
         
         <h1>TA Queue</h1>
         <table className={'qBotTable'}>

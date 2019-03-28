@@ -3,7 +3,6 @@ import { cohortCollection } from '../services/firebase';
 import {useFirestore} from './connectFirestore';
 
 export default function CohortSort({ onChange }) {
-
   const cohortsList = useFirestore(cohortCollection, [])
     .map(cohort => {
       return (
