@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SortForm matches a snapshot 1`] = `
+<Fragment>
+  <label
+    className="sortLabel"
+  >
+    Sort By Time:
+  </label>
+  <select
+    onChange={[MockFunction]}
+  >
+    <option
+      name="desc"
+      value="desc"
+    >
+      Descending
+    </option>
+    <option
+      name="asc"
+      value="asc"
+    >
+      Ascending
+    </option>
+  </select>
+</Fragment>
+`;

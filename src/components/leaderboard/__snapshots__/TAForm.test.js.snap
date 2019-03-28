@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TAForm matches a snapshot 1`] = `
+<Fragment>
+  <h2
+    className="addTaHeader"
+  >
+    Add New TA
+  </h2>
+  <form
+    className="taForm"
+    id="taForm"
+    onSubmit={[Function]}
+  >
+    <label>
+      TA Name
+    </label>
+    <input
+      disabled="disabled"
+      name="name"
+      type="text"
+      value="User Name"
+    />
+    <CohortSort
+      onChange={[Function]}
+    />
+    <button
+      className="submit"
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</Fragment>
+`;

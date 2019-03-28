@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TA matches a snapshot 1`] = `
+<tr
+  className="tableRow"
+>
+  <td
+    className="tableData"
+  >
+    TA Name
+  </td>
+  <td
+    className="tableData"
+  >
+    FSFJ 2020
+  </td>
+  <td
+    className="tableData"
+  >
+    <Claim
+      id="1234"
+      name="TA Name"
+    />
+  </td>
+  <td
+    className="tableData"
+  >
+    <button
+      className="taDeleteButton"
+      onClick={[Function]}
+    >
+      X
+    </button>
+  </td>
+</tr>
+`;

@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Questions matches a snapshot 1`] = `
+<Fragment>
+  <WithUser />
+  <FilterForm
+    onChange={[Function]}
+    value=""
+  />
+  <SortForm
+    handleChange={[Function]}
+  />
+  <CohortSort
+    onChange={[Function]}
+  />
+  <ClaimSort
+    onChange={[Function]}
+  />
+  <QuestionsList
+    providerData="TA Name"
+    questions={Array []}
+  />
+</Fragment>
+`;
