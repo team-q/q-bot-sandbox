@@ -1,0 +1,85 @@
+//colors
+$color_tuna: #373a47;
+$color_bright_red: #a90000;
+$color_submarine: #bdc3c7;
+$color_sapphire: #39499b;
+$color_nobel: #b8b7ad;
+$white: #FFFFFF;
+$black_30: rgba(0, 0, 0, 0.3);
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+	position: absolute;
+	width: 2.3em;
+	height: 1.7em;
+	right: 2.5em;
+	top: 1.5em;
+}
+ 
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+	background: $color_tuna;
+}
+ 
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+	background: $color_bright_red;
+}
+ 
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+	height: 1.5em;
+	width: 1.5em;
+	margin-right: .7em;
+}
+ 
+/* Color/shape of close button cross */
+.bm-cross {
+	background: $color_submarine;
+}
+ 
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+	position: fixed;
+	height: 100%;
+	margin: 0 0 0 -2em;
+}
+ 
+/* General sidebar styles */
+.bm-menu {
+	background: $color_sapphire;
+	padding: 2.5em 1.5em 0 0;
+	font-size: 1.15em;
+	margin-right: .45em;
+	margin-left: -.45em;
+}
+ 
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+	fill: $color_tuna;
+}
+ 
+/* Wrapper for item list */
+.bm-item-list {
+	color: $color_nobel;
+	padding: 0 0 0 20%;
+}
+ 
+/* Individual item */
+.bm-item {
+	display: inline-flex;
+}
+ 
+/* Styling of overlay */
+.bm-overlay {
+	background: $black_30;
+}
+
+.sidebarTitle {
+	color: $white;
+	margin-bottom: 2em;
+	font-size: 2em;
+}
