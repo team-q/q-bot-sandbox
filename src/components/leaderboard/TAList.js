@@ -2,7 +2,6 @@ import React from 'react';
 import { useFirestore } from '../connectFirestore';
 import { taCollection } from '../../services/firebase';
 import TA from './TA';
-import Claim from './Claim';
 
 export default function TAList({ handleDelete }) {
   const taCollectionList = useFirestore(taCollection, [])
@@ -25,7 +24,6 @@ export default function TAList({ handleDelete }) {
           {list}
         </tbody>
       </table>
-      <Claim taCollectionList={taCollectionList} />
     </>
   );
 }

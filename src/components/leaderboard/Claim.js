@@ -2,16 +2,11 @@ import React from 'react';
 import { useFirestore } from '../connectFirestore';
 import { questionCollection } from '../../services/firebase';
 
-export default function Claim({ taCollectionList }) {
-  const help = taCollectionList.map(doc => {
-    console.log('doc', doc);
-    const matches = useFirestore(questionCollection.where('TA', '==', doc.name))
-    return console.log('matches', matches);
-  })
-
-  console.log('help', help);
-
+export default function Claim({ name }) {
+  const claims = useFirestore(questionCollection.where('TA', '==', name))
+  if(!claims) return <p>Looking up claims</p>
+  
   return (
-    <h1>HELLO</h1>
+    <h1>{claims.length}</h1>
   )
 }
