@@ -28,14 +28,15 @@ export default class SideBar extends React.Component {
           isOpen={this.state.menuOpen}
           onStateChange={(state) => this.handleStateChange(state)}
         >
-          <Link className="menu-item" to="/questions" 
+          <h1 className={'sidebarTitle'}>Q Bot</h1>
+          <Link className={'menu-item'} to='/questions' 
             onClick={() => this.closeMenu()}
           >
             Queue
           </Link>
           <br/>
           <br/>
-          <Link className="menu-item" to="/leaderboard" 
+          <Link className={'menu-item'} to='/leaderboard' 
             onClick={() => this.closeMenu()}
           >
             Leaderboard

@@ -4,6 +4,7 @@ $color_bright_red: #a90000;
 $color_submarine: #bdc3c7;
 $color_sapphire: #39499b;
 $color_nobel: #b8b7ad;
+$white: #FFFFFF;
 $black_30: rgba(0, 0, 0, 0.3);
 
 /* Position and sizing of burger button */
@@ -75,4 +76,10 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* Styling of overlay */
 .bm-overlay {
 	background: $black_30;
+}
+
+.sidebarTitle {
+	color: $white;
+	margin-bottom: 2em;
+	font-size: 2em;
 }
