@@ -21,9 +21,6 @@ exports[`TAForm matches a snapshot 1`] = `
       type="text"
       value="User Name"
     />
-    <label>
-      Cohort
-    </label>
     <CohortSort
       onChange={[Function]}
     />

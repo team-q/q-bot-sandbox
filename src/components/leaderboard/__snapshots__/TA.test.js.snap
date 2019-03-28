@@ -17,7 +17,10 @@ exports[`TA matches a snapshot 1`] = `
   <td
     className="tableData"
   >
-    2
+    <Claim
+      id="1234"
+      name="TA Name"
+    />
   </td>
   <td
     className="tableData"
