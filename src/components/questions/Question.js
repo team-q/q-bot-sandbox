@@ -8,13 +8,13 @@ export default function Question({questionObj, handleClick}) {
   const quest = question.split('> ')[1];
 
   let end = moment(date);
-  const times = moment(end).toNow(true);
+  const waitTime = moment(end).toNow(true);
 
   return (
     <tr key={id} className={'tableRow'}>
       <td className={'tableData'}>{name}</td>
       <td className={'tableData'}>{quest}</td>
-      <td className={'tableData'}><p>{date.toLocaleString().split(',').join('')}</p> Waiting: {times}</td>
+      <td className={'tableData'}><p>{date.toLocaleString().split(',').join('')}</p> Waiting: {waitTime}</td>
       <td className={'tableData'}>
         {TA}
         <button 
