@@ -2,12 +2,19 @@ import React, { useState } from 'react';
 import FilterForm from './FilterForm';
 import SortForm from './SortForm';
 import CohortSort from '../CohortSort';
-import QuestionsList from './QuestionsList';
+import QuestionsList from './QuestionsList'
+import { useFirestore } from '../connectFirestore';
+import { questionCollection } from '../../services/firebase';
 
 export default function Questions({ providerData }) {
   const [filterValue, setFilterValue] = useState('')
   const [sortValue, setSortValue] = useState('desc');
   const [cohortSortValue, setCohortSortValue] = useState('')
+
+  const questions = useFirestore(questionCollection.orderBy('timestamp', sortValue), [], sortValue, cohortSortValue)
+  .filter(c => {
+     return (c.question.includes(filterValue.toLowerCase()) || c.question.includes(filterValue.toUpperCase())) && c.channelName.includes(cohortSortValue)
+  })
 
   return (
     <>
@@ -15,9 +22,7 @@ export default function Questions({ providerData }) {
       <SortForm handleChange={({target}) => setSortValue(target.value)} />
       <CohortSort onChange={({target}) => {setCohortSortValue(target.value)}} />
       <QuestionsList 
-        filterValue={filterValue}
-        sortValue={sortValue}
-        cohortSortValue={cohortSortValue}
+        questions={questions}
         providerData={providerData}
       /> 
     </>

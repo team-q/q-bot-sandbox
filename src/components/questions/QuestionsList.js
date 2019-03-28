@@ -1,20 +1,13 @@
 import React, { useState } from 'react';
-import { useFirestore } from '../connectFirestore';
-import { questionCollection } from '../../services/firebase';
 import Header from '../layout/Header';
 import './Questions.scss';
 import Question from './Question';
 import { addClaim } from '../../actions/questions';
 
- export default function QuestionsList({ filterValue, sortValue, cohortSortValue, providerData }) {
+ export default function QuestionsList({ questions, providerData }) {
    const [taName] = useState(providerData[0].displayName);
 
-   const question = useFirestore(questionCollection.orderBy('timestamp', sortValue), [], sortValue, cohortSortValue)
-   .filter(c => {
-      return (c.question.includes(filterValue.toLowerCase()) || c.question.includes(filterValue.toUpperCase())) && c.channelName.includes(cohortSortValue)
-   })
-   
-   const questionTableItems = question && question.map(doc => {
+   const questionTableItems = questions && questions.map(doc => {
     return (
       <Question 
         questionObj={doc} 
@@ -37,8 +30,8 @@ import { addClaim } from '../../actions/questions';
    return (
     <>
     <Header />
-    {question === null && <h1>Loading...</h1>}
-    { question && 
+    {questions === null && <h1>Loading...</h1>}
+    { questions && 
       <>
         <h1>TA Queue</h1>
         <table className={'qBotTable'}>
