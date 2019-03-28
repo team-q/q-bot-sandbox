@@ -8,7 +8,6 @@ import TAList from './TAList';
 import Header from '../layout/Header';
 
 export default class LeaderBoard extends PureComponent {
-  
   handleSubmit = (name, cohort, event) => {
     event.preventDefault();
     const user = this.props.providerData[0].displayName

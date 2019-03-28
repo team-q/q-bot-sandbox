@@ -15,7 +15,7 @@ import CohortSort from '../CohortSort';
    const [cohortSortValue, setCohortSortValue] = useState('')
    const [taName] = useState(providerData[0].displayName);
 
-   const question = useFirestore(questionCollection.orderBy('timestamp', sortValue), [], [sortValue, cohortSortValue])
+   const question = useFirestore(questionCollection.orderBy('timestamp', sortValue), [], sortValue, cohortSortValue)
    .filter(c => {
       return (c.question.includes(filterValue.toLowerCase()) || c.question.includes(filterValue.toUpperCase())) && c.channelName.includes(cohortSortValue)
    })
@@ -48,8 +48,7 @@ import CohortSort from '../CohortSort';
       <>
         <FilterForm value={filterValue} onChange={({target}) => setFilterValue(target.value)}/>
         
-        <SortForm handleChange={({target}) => setSortValue(target.value)}
-        />
+        <SortForm handleChange={({target}) => setSortValue(target.value)} />
 
         <CohortSort onChange={({target}) => {setCohortSortValue(target.value)}} />
         
