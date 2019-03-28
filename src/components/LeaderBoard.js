@@ -5,7 +5,6 @@ import { addTA, deleteTA } from '../actions/TA';
 import { taCollection, questionCollection } from '../services/firebase'
 import './LeaderBoard.scss';
 import Header from './Header';
-import CohortSort from './CohortSort';
 
 export default class LeaderBoard extends PureComponent {
   
@@ -44,7 +43,6 @@ export default class LeaderBoard extends PureComponent {
     return (
       <>
         <Header/>
-        <CohortSort getCohorts={this.getCohorts}/>
         <TAForm 
           user={this.props.providerData[0].displayName} 
           handleSubmit={this.handleSubmit}
