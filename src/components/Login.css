@@ -31,6 +31,57 @@ main {
   align-items: center;
 }
 
+.logo-div:after {
+  clear:both;
+  display:block;
+  content:'';
+}
+
+.logo-div img:hover {
+  -webkit-animation: shake .5s ease-in-out;
+  animation: shake .5s ease-in-out;
+}
+@-webkit-keyframes shake {
+  0% {
+    -webkit-transform: translateX(0);
+  }
+  20% {
+    -webkit-transform: translateX(-.5em);
+  }
+  40% {
+    -webkit-transform: translateX(.2em);
+  }
+  60% {
+    -webkit-transform: translateX(-.5em);
+  }
+  80% {
+    -webkit-transform: translateX(.2em);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+  }
+}
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-.5em);
+  }
+  40% {
+    transform: translateX(.2em);
+  }
+  60% {
+    transform: translateX(-.5em);
+  }
+  80% {
+    transform: translateX(.2em);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 .logo-div h1 {
   font-family: 'Roboto Mono', monospace;
   font-size: 4em;
