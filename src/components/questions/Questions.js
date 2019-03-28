@@ -47,9 +47,8 @@ import { addClaim } from '../../actions/questions';
       <>
         <FilterForm value={filterValue} onChange={({target}) => setFilterValue(target.value)}/>
         
-        <SortForm value={sortValue} 
-          handleChange={({target}) => setSortValue(target.value)} 
-        />
+        <SortForm handleChange={({target}) => setSortValue(target.value)} />
+        
         <h1>TA Queue</h1>
         <table className={'qBotTable'}>
           <thead>

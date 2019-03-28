@@ -2,20 +2,24 @@ import React from 'react';
 import { cohortCollection } from '../services/firebase';
 import {useFirestore} from './connectFirestore';
 
-export default function CohortSort() {
+export default function CohortSort({ onChange }) {
 
   const cohortsList = useFirestore(cohortCollection, [])
     .map(cohort => {
       return (
-        <li key={cohort.channelId}>
+        <option 
+          name={cohort.channelName}
+          value={cohort.channelName}
+          key={cohort.channelId}
+        >
           {cohort.channelName}
-        </li>
+        </option>
       )
     })
 
   return (
-    <ul>
+    <select onChange={onChange}>
       {cohortsList}
-    </ul>
+    </select>
   )
 }
