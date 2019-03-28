@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Questions matches a snapshot 1`] = `
+<Fragment>
+  <WithUser />
+  <FilterForm
+    onChange={[Function]}
+    value=""
+  />
+  <SortForm
+    handleChange={[Function]}
+  />
+  <CohortSort
+    onChange={[Function]}
+  />
+  <h1>
+    TA Queue
+  </h1>
+  <table
+    className="qBotTable"
+  >
+    <thead>
+      <tr>
+        <th
+          className="tableHeader"
+          key="0"
+        >
+          Name
+        </th>
+        <th
+          className="tableHeader"
+          key="1"
+        >
+          Question
+        </th>
+        <th
+          className="tableHeader"
+          key="2"
+        >
+          Timestamp
+        </th>
+        <th
+          className="tableHeader"
+          key="3"
+        >
+          TA
+        </th>
+        <th
+          className="tableHeader"
+          key="4"
+        >
+          Solved
+        </th>
+      </tr>
+    </thead>
+    <tbody />
+  </table>
+</Fragment>
+`;

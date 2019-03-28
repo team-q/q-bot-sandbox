@@ -18,13 +18,25 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "exit 0",
+    "test": "jest --verbose",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "firebase deploy --only hosting"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(scss)$": "identity-obj-proxy",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js"
+    },
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>src/setupTests.js"
+    ]
   },
   "browserslist": [
     ">0.2%",
@@ -33,6 +45,16 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "firebase-tools": "^6.5.0"
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/preset-react": "^7.0.0",
+    "babel-jest": "^24.5.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.11.2",
+    "enzyme-to-json": "^3.3.5",
+    "firebase-tools": "^6.5.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.5.0",
+    "react-test-renderer": "^16.8.6"
   }
 }

@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TAList matches a snapshot 1`] = `
+<Fragment>
+  <h1>
+    TA Leader Board
+  </h1>
+  <table
+    className="leaderTable"
+  >
+    <thead>
+      <tr>
+        <th
+          className="tableHeader"
+        >
+          Name
+        </th>
+        <th
+          className="tableHeader"
+        >
+          Cohort
+        </th>
+        <th
+          className="tableHeader"
+        >
+          Claimed Tickets
+        </th>
+        <th
+          className="tableHeader"
+        >
+          Delete
+        </th>
+      </tr>
+    </thead>
+    <tbody />
+  </table>
+</Fragment>
+`;
