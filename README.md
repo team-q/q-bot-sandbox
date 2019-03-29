@@ -45,6 +45,12 @@ During class, one-off questions from students are common - where diagnosing an i
 ## Previews
 ![Qbot](./src/assets/QbotSlackapp.png)
 
+![Slack](./src/assets/slackthread.png)
+
+![Queue](./src/assets/queue.png)
+
+![Leaderboard](./src/assets/leaderboard.png)
+
 ## License
 Standard [MIT](/LICENSE.md)
 
