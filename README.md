@@ -30,7 +30,7 @@ During class, one-off questions from students are common - where diagnosing an i
 1. Deploy to Firebase hosting using Travis CI
 
 ## Previews
-![Qbot](./src/assets/logo_sm.png)
+![Qbot](./src/assets/QbotSlackapp.png)
 
 
 
