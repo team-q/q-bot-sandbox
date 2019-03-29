@@ -1,13 +1,12 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 import Login from './Login';
 
-describe('Login', () => {
+describe('Questions', () => {
   it('matches a snapshot', () => {
-    const tree = renderer.create(
+    const wrapper = shallow(
       <Login />
-    ).toJSON();
-    expect(tree).toMatchSnapshot();
+    );
+    expect(wrapper).toMatchSnapshot();
   });
 });
-

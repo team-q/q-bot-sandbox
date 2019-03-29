@@ -1,38 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Login matches a snapshot 1`] = `
-<main>
-  <div
-    className="logo-div"
-  >
-    <img
-      alt="logo"
-      src="/path/image"
-    />
-    <h1>
-      Q BOT
-    </h1>
-  </div>
-  <br />
-  <span>
-    Sign in with:
-  </span>
-  <br />
-  <button
-    className="login-btn"
-    name="google"
-    onClick={[Function]}
-    value="google"
-  >
-    Google
-  </button>
-  <button
-    className="login-btn"
-    name="github"
-    onClick={[Function]}
-    value="github"
-  >
-    GitHub
-  </button>
-</main>
+exports[`Questions matches a snapshot 1`] = `
+<Fragment>
+  <main>
+    <div
+      className="logo-div"
+    >
+      <img
+        alt="logo"
+        src="/path/image"
+      />
+      <h1>
+        Q BOT
+      </h1>
+    </div>
+    <br />
+    <span>
+      Sign in with:
+    </span>
+    <br />
+    <button
+      className="login-btn"
+      name="google"
+      onClick={[Function]}
+      value="google"
+    >
+      Google
+    </button>
+    <button
+      className="login-btn"
+      name="github"
+      onClick={[Function]}
+      value="github"
+    >
+      GitHub
+    </button>
+    <br />
+    <br />
+    <Link
+      to="/about"
+    >
+      About Us
+    </Link>
+  </main>
+</Fragment>
 `;

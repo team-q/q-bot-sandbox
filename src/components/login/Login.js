@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { subscribe, loginWithProvider } from '../../services/firebase';
 import logo from '../../assets/logo.png';
 import './Login.scss';
@@ -61,6 +62,9 @@ export default class Login extends Component {
           >
             GitHub
           </button>
+          <br/>
+          <br/>
+          <Link to="/about">About Us</Link>
         </main>
       </>
     );
