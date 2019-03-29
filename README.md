@@ -16,7 +16,7 @@ During class, one-off questions from students are common - where diagnosing an i
 ## The idea
 - Students @ mention the bot in a private class Slack channel, and the bot responds in a threaded reply confirming their question was added to the queue.
 - The student’s name and their concern are then added to the database, and TA's can login to filter, sort and claim questions.
-- Includes a Leaderboard for viewing stats on TA's with the most solved questions.
+- Includes a Leaderboard for viewing stats on TA's with the most claimed questions.
 
 ## Getting Started
 1. Clone and download [GitHub repo](https://github.com/team-q/q-bot-sandbox)
