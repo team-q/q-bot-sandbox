@@ -18,6 +18,14 @@ export default class LeaderBoard extends PureComponent {
     deleteTA(id);
   }
 
+  getTAs = () => {	
+    return taCollection.get().then(snap => {	
+      return snap.docs.map(doc => {	
+        return console.log(doc.data().name || 'User')	
+      })	
+    })	
+  }
+
   getCohorts = () => {
     return questionCollection.get().then(snap => {
       return snap.docs.map(doc => {

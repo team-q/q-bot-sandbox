@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { subscribe, loginWithProvider } from '../../services/firebase';
 import logo from '../../assets/logo.png';
+import github from '../../assets/github.png';
 import './Login.scss';
 
 export default class Login extends Component {
@@ -65,6 +66,11 @@ export default class Login extends Component {
           <br/>
           <br/>
           <Link to="/about">About Us</Link>
+          <br/>
+          <br/>
+          <a href="https://github.com/team-q/q-bot-sandbox" target="_blank" rel="noopener noreferrer">
+            <img src={github} alt="github" className={"github"}/>
+          </a>
         </main>
       </>
     );
