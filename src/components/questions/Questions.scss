@@ -193,12 +193,13 @@ button, select {
 		display: none !important;
 	}
 
-	.cohortSort {
-		display: none !important;
+	.cohortSort  {
+		display: inline-block;
+		margin-left: 1em;
 	}
 
 	.questionLabel {
-		margin-left: 1em;
+		margin: 0 1em;
 	}
 }
 
