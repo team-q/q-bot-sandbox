@@ -21,3 +21,19 @@
   height: 2em;
   width: 2em;
 }
+
+p {
+  padding: 0 1em;
+}
+
+// mobile styles
+@media(max-width: 480px) {
+  .imageWrapper {
+    display: block;
+  }
+
+  .aboutWrapper {
+    margin-left: 5%;
+    flex-wrap: wrap;
+  }
+}
