@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { app } from '../services/firebase'; 
 
- export const useFirestore = (ref, initialState = null, id = null, banana = null, idk = null) => {
+ export const useFirestore = (ref, initialState = null, id = null, val = null, val2 = null) => {
   const [ data, setData ] = useState(initialState);
   
   useEffect(() => {
@@ -14,7 +14,7 @@ import { app } from '../services/firebase';
         setData(data)
       }
     });
-  }, [id, banana, idk])
+  }, [id, val, val2])
   
   return data;
 }
