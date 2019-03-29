@@ -28,7 +28,7 @@ const filterClaimed = {
   
    const questions = useFirestore(questionCollection.orderBy('timestamp', sortValue), [], sortValue, cohortSortValue, claimSortValue)
    .filter(c => {
-      return (c.question.includes(filterValue.toLowerCase()) || c.question.includes(filterValue.toUpperCase())) && c.channelName.includes(cohortSortValue) && filterClaimed[claimSortValue](c.TA)
+      return c.question.toLowerCase().includes(filterValue.toLowerCase()) && c.channelName.includes(cohortSortValue) && filterClaimed[claimSortValue](c.TA)
    })
 
   return (
