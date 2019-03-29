@@ -42,6 +42,19 @@ exports[`Questions matches a snapshot 1`] = `
     >
       About Us
     </Link>
+    <br />
+    <br />
+    <a
+      href="https://github.com/team-q/q-bot-sandbox"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <img
+        alt="github"
+        className="github"
+        src="/path/image"
+      />
+    </a>
   </main>
 </Fragment>
 `;
