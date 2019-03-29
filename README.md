@@ -5,7 +5,7 @@
 **https://qbot.alchemycodelab.io**
 
 ## Overview
-For our final project in [Alchemy](https://www.alchemycodelab.com/) career track, we built a Slack bot which adds student questions to Google Cloud Firestore collections.
+For our final project in [Alchemy](https://www.alchemycodelab.com/) career track, we built a Slack bot that adds student questions to Cloud Firestore collections.
 
 ## Architecture
 Built in 4 days using Slack's Events & Conversations API's, Cloud Firestore, Firebase OAuth (GitHub + Google), ReactJS, React Hooks, Google Cloud Functions, Moment.js, Sass, continuous deployment via Travis-CI, and snapshot tests with Jest and Enzyme.
@@ -20,18 +20,33 @@ During class, one-off questions from students are common - where diagnosing an i
 
 ## Getting Started
 1. Clone and download [GitHub repo](https://github.com/team-q/q-bot-sandbox)
-1. Install dependencies:\
-`npm i`
-1. Run snapshot tests:\
-`npm run test`
-1. Create a Slack App that listens for `app_mentions`
-1. Hook the Slack Event subscription to the `helloSlack` Cloud Function end point
-1. Establish Firebase OAuth for Google/GitHub, Firestore collections
-1. Deploy to Firebase hosting using Travis CI
+2. Install dependencies: `npm i`
+3. Run snapshot tests: `npm run test`
+4. Create a Firebase project and deploy
+5. Create a Slack App and Enable Events
+   * Add the `helloSlack` Cloud Function trigger end point to the Slack Events Subscription Request URL
+   * Subscribe to the `app_mention` Bot Event
+   * Create a Bot User OAuth Access Token
+     * Save token to `processQuestion` and `saveCohortName` Function ENV settings in Google Cloud Platform
+   * Activate Incoming Webhooks for each private Slack channel, and add to `processQuestion` function
+   * NOTE: For Slack verification, `helloSlack` will initially need to be deployed as:
+     ```javascript
+     exports.helloSlack = functions.https.onRequest((request, response) => {
+        if(request) {
+          response.status(200).send(request.body);
+        } else {
+          throw response.status(500);
+        }
+     })
+     ```
+6. Establish Firebase OAuth for Google/GitHub, Firestore collections
+7. Deploy to Firebase hosting using Travis CI
 
 ## Previews
 ![Qbot](./src/assets/QbotSlackapp.png)
 
+## License
+Standard [MIT](/LICENSE.md)
 
-
-
+## Acknowledgements
+Thank you to [Ryan Mehta](https://github.com/mehtaphysical) for your brilliant guidance and support
