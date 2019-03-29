@@ -178,6 +178,7 @@ button, select {
 
 	.sortLabel {
 		margin-left: 1em;
+		display: inline-block;
 	}
 
 	select {
@@ -186,6 +187,18 @@ button, select {
 
 	label {
 		margin-bottom: 1em;
+	}
+
+	.claimedStatus {
+		display: none !important;
+	}
+
+	.cohortSort {
+		display: none !important;
+	}
+
+	.questionLabel {
+		margin-left: 1em;
 	}
 }
 
