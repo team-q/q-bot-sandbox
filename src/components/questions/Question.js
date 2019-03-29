@@ -6,7 +6,7 @@ moment().format();
 export default function Question({questionObj, handleClick}) {
   const { id, name, question, TA, timestamp, solved = false } = questionObj;
   const date = new Date(timestamp * 1000);
-  const quest = question.split('> ')[1];
+  const quest = question.replace(/[<@UHEMKNNPP>]/g, '');
 
   let end = moment(date);
   const waitTime = moment(end).toNow(true);
