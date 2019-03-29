@@ -19,7 +19,7 @@ export default function CohortSort({ onChange }) {
     let cohortName = '';
 
   return (
-    <label>
+    <label className={'cohortSort'}>
       Select a Cohort:
       <select onChange={onChange} defaultValue={cohortName} required>
         <option  disabled value=''>Select Cohort</option>

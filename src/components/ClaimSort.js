@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function ClaimSort({ selectedValue, onChange }) {
   return (
-    <label>
+    <label className={'claimedStatus'}>
       Sort By Claimed Status:
       <select onChange={onChange} defaultValue={selectedValue}>
         <option value='both'>All</option>
