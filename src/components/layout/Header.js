@@ -1,72 +1,49 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-
-import { signOut, auth } from '../../services/firebase';
-import { withUser } from '../withUser';
+import { signOut } from '../../services/firebase';
+import { useUser } from '../withUser';
 import SideBar from './SideBar';
 import './Header.scss';
 
-class Header extends PureComponent {
-  state = {
-    width: window.innerWidth
-  }
+// Nice job with the conditional loading!
+// its probably preferable to use media queries though
+export default function Header() {
+  // use a hook here
+  const user = useUser();
+  if (!user) return null;
 
-  componentWillMount() {
-    window.addEventListener('resize', this.handleWindowSizeChange);
-  }
+  const profileImg = user.photoURL;
+  const profileName = user.displayName;
+  const profileNameSpace = profileName !== null && profileName.includes(' ');
+  const space = profileNameSpace && profileName.indexOf(' ');
+  const trimmedName = profileNameSpace ? profileName.slice(0, space) : 'User';
 
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.handleWindowSizeChange);
-  }
+  return (
+    <header className='headerStyles'>
+      <nav>
 
-  handleWindowSizeChange = () => {
-    this.setState({ width: window.innerWidth });
-  }
+        <SideBar className='sidebar' pageWrapId='page-wrap' />
 
-  handleSignOut = () => {
-    signOut();
-  }
+        <h1 className='header'>Q Bot</h1>
 
-  render() {
-    const profileImg = auth.currentUser.providerData[0].photoURL;
-    const profileName = auth.currentUser.providerData[0].displayName;
-    const profileNameSpace = profileName !== null && profileName.includes(' ');
-    const space = profileNameSpace && profileName.indexOf(' ');
-    const trimmedName = profileNameSpace ? profileName.slice(0, space) : 'User';
-    const { width } = this.state;
-    const isMobile = width <= 667;
-
-    return (
-      <header className={'headerStyles'}>
-        <nav>
-
-        {isMobile ? <SideBar pageWrapId={'page-wrap'} /> : null}
-
-          <h1 className={'header'}>Q Bot</h1>
-
-          {isMobile ? null : <ul className={'ulStyles'}>
-              <li><Link to="/questions" className={'links'}>Queue</Link></li>
-              <li><Link to="/leaderboard" className={'links'}>Leaderboard</Link></li>
-              <li className={'avatarWelcome'}>
-                <img src={profileImg ? profileImg : null} alt="avatar" className={'avatar'} />
-                <p className={'welcome'}>
-                  Welcome, {trimmedName}!
+        <ul className='ulStyles'>
+          <li><Link to="/questions" className='links'>Queue</Link></li>
+          <li><Link to="/leaderboard" className='links'>Leaderboard</Link></li>
+          <li className='avatarWelcome'>
+            <img src={profileImg ? profileImg : null} alt="avatar" className='avatar' />
+            <p className='welcome'>
+              Welcome, {trimmedName}!
                 </p>
-              </li>
-              <li>
-                <button name='signout' value='signout'
-                  onClick={this.handleSignOut} className={'logout'}
-                >
-                  Sign Out
+          </li>
+          <li>
+            <button name='signout' value='signout'
+              onClick={signOut} className='logout'
+            >
+              Sign Out
                 </button>
-              </li>
-            </ul>
-          }
-
-        </nav>
-      </header>
-    );
-  }
+          </li>
+        </ul>
+      </nav>
+    </header>
+  );
 }
-
-export default withUser(Header);

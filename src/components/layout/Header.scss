@@ -16,15 +16,20 @@ $font_1: Roboto;
 	width: 100%;
 }
 .ulStyles {
-	list-style: none;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	align-items: center;
-	margin: 0;
-	padding: 0;
-	width: 80%;
-	float: right;
+
+	display: none;
+
+	@media screen and (min-width: 667px)  {
+		list-style: none;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		align-items: center;
+		margin: 0;
+		padding: 0;
+		width: 80%;
+		float: right;
+	}
 }
 .avatar {
 	border-radius: 50%;
@@ -80,7 +85,7 @@ nav {
   .header {
     margin: 0 0 .3em 0;
 	}
-	
+
 	nav h1 {
 		padding-top: .2em;
 		width: 60%;
@@ -94,5 +99,11 @@ nav {
 		color: #ffffff;
     text-decoration: none;
     font-size: 1em;
+	}
+}
+
+.sidebar {
+	@media screen and (min-width: 667px) {
+		display: none
 	}
 }
