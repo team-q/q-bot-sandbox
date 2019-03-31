@@ -1,5 +1,12 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { subscribe } from '../services/firebase';
+
+export const useUser = () => {
+  const [currentUser, setCurrentUser] = useState(null)
+  useEffect(() => subscribe(user => setCurrentUser(user)))
+
+  return currentUser
+}
 
 export const withUser = Component => {
   class WithUser extends React.PureComponent {
