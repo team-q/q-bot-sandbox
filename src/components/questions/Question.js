@@ -3,7 +3,7 @@ import { addSolved } from '../../actions/questions';
 const moment = require('moment');
 moment().format();
 
-export default function Question({questionObj, handleClick}) {
+export default function Question({ questionObj, handleClick }) {
   const { id, name, question, TA, timestamp, solved = false } = questionObj;
   const date = new Date(timestamp * 1000);
   // the following string is the Slack Bot user ID to replace:
@@ -19,13 +19,13 @@ export default function Question({questionObj, handleClick}) {
       <td className={'tableData'}><p>{date.toLocaleString().split(',').join('')}</p> <span className={(TA !== undefined ? 'Solved' : '')}>Waiting: {waitTime}</span></td>
       <td className={'tableData'}>
         {TA}
-        <button 
-          onClick={handleClick.bind(null, id)} 
-          className={'taButton' + (TA !== undefined ? 'Active' : '')}>
+        <button
+          onClick={handleClick}
+          className={'taButton' + (TA ? 'Active' : '')}>
         </button>
       </td>
       <td className={'tableData'} id={'solvedColumn'}>
-        <input type='checkbox' name='solvedValue' 
+        <input type='checkbox' name='solvedValue'
           checked={solved}
           value={solved}
           onChange={({ target }) => addSolved(target.checked, id)}
