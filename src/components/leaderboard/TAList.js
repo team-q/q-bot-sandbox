@@ -7,9 +7,7 @@ export default function TAList({ handleDelete }) {
   const taCollectionList = useFirestore(taCollection.orderBy('claimCount', 'desc'), [])
   const list = taCollectionList.map(doc => {
     return <TA
-      handleDelete={handleDelete}
       key={doc.id}
-      id={doc.id}
       name={doc.name}
       cohort={doc.cohort}
       claims={doc.claimCount}
@@ -25,7 +23,6 @@ export default function TAList({ handleDelete }) {
             <th className={'tableHeader'}>Name</th>
             <th className={'tableHeader'}>Cohort</th>
             <th className={'tableHeader'}>Claimed Tickets</th>
-            <th className={'tableHeader'}>Delete</th>
           </tr>
         </thead>
         <tbody>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function TA({ name, cohort, id, claims, handleDelete }) {
+export default function TA({ name, cohort, claims }) {
   return (
     <tr className={'tableRow'}>
       <td className={'tableData'}>{name || 'User'}</td>
