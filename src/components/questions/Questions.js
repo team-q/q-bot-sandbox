@@ -20,28 +20,28 @@ const filterClaimed = {
   }
 }
 
- export default function Questions({ providerData }) {
-   const [filterValue, setFilterValue] = useState('')
-   const [sortValue, setSortValue] = useState('desc');
-   const [cohortSortValue, setCohortSortValue] = useState('')
-   const [claimSortValue, setClaimSortValue] = useState('both')
-  
-   const questions = useFirestore(questionCollection.orderBy('timestamp', sortValue), [], sortValue, cohortSortValue, claimSortValue)
-   .filter(c => {
+export default function Questions({ providerData }) {
+  const [filterValue, setFilterValue] = useState('')
+  const [sortValue, setSortValue] = useState('desc');
+  const [cohortSortValue, setCohortSortValue] = useState('')
+  const [claimSortValue, setClaimSortValue] = useState('both')
+
+  const questions = useFirestore(questionCollection.orderBy('timestamp', sortValue), [], sortValue, cohortSortValue, claimSortValue)
+    .filter(c => {
       return c.question.toLowerCase().includes(filterValue.toLowerCase()) && c.channelName.includes(cohortSortValue) && filterClaimed[claimSortValue](c.TA)
-   })
+    })
 
   return (
     <>
-      <Header/>
-      <FilterForm value={filterValue} onChange={({target}) => setFilterValue(target.value)}/>
-      <SortForm handleChange={({target}) => setSortValue(target.value)} />
-      <CohortSort onChange={({target}) => {setCohortSortValue(target.value)}} />
-      <ClaimSort onChange={({target}) => {setClaimSortValue(target.value)}} />
-      <QuestionsList 
+      <Header />
+      <FilterForm value={filterValue} onChange={({ target }) => setFilterValue(target.value)} />
+      <SortForm handleChange={({ target }) => setSortValue(target.value)} />
+      <CohortSort onChange={({ target }) => { setCohortSortValue(target.value) }} />
+      <ClaimSort onChange={({ target }) => { setClaimSortValue(target.value) }} />
+      <QuestionsList
         questions={questions}
         providerData={providerData}
-      /> 
+      />
     </>
   )
 }
