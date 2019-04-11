@@ -16,3 +16,5 @@ exports.processQuestion = functions.firestore.document('question/{id}').onCreate
 exports.saveChannelName = functions.firestore.document('question/{id}').onCreate(saveChannelNameHandler(admin));
 
 exports.saveCohortName = functions.firestore.document('cohort/{id}').onCreate(saveCohortNameHandler(admin));
+
+exports.solveQuestion = functions.firestore.document('question/{id}').onUpdate(require('./handlers/solveQuestion')(admin));

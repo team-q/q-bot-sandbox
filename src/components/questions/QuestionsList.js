@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Questions.scss';
 import Question from './Question';
 import { addClaim } from '../../actions/questions';
