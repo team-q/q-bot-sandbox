@@ -19,17 +19,17 @@ export default function StudentLeaderBoard() {
     })
   return (
     <table>
-      <thead>
+      <thead className={'qBotTable'}>
         <tr>
-          <th>Student</th>
-          <th>Count</th>
+          <th className={'tableHeader'}>Student</th>
+          <th className={'tableHeader'}>Count</th>
         </tr>
       </thead>
       <tbody>
         {sorted.map(student => (
-          <tr>
-            <td>{student[0]}</td>
-            <td>{student[1]}</td>
+          <tr className={'tableRow'}>
+            <td className={'tableData'}>{student[0]}</td>
+            <td className={'tableData'}>{student[1]}</td>
           </tr>
         ))}
       </tbody>
