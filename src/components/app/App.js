@@ -9,8 +9,8 @@ import Login from '../login/Login';
 import LeaderBoard from '../leaderboard/LeaderBoard';
 import Questions from '../questions/Questions';
 import About from '../about/About';
-import { withAuth } from '../withAuth';
 import StudentLeaderBoard from '../leaderboard/student/StudentLeaderBoard';
+import { withAuth } from '../withAuth';
 
 class App extends Component {
   render() {
