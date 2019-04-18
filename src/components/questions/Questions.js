@@ -33,7 +33,6 @@ export default function Questions({ providerData }) {
 
   return (
     <>
-      <Header />
       <FilterForm value={filterValue} onChange={({ target }) => setFilterValue(target.value)} />
       <SortForm handleChange={({ target }) => setSortValue(target.value)} />
       <CohortSort onChange={({ target }) => { setCohortSortValue(target.value) }} />

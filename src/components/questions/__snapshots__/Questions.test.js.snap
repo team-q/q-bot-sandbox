@@ -2,7 +2,6 @@
 
 exports[`Questions matches a snapshot 1`] = `
 <Fragment>
-  <WithUser />
   <FilterForm
     onChange={[Function]}
     value=""
