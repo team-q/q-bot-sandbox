@@ -17,6 +17,7 @@ export const firestore = app.firestore()
 export const questionCollection = firestore.collection('question')
 export const taCollection = firestore.collection('TA')
 export const cohortCollection = firestore.collection('cohort')
+export const solvedCollection = firestore.collection('solved')
 
 export const auth = app.auth();
 export const loginMethod = auth.signInWithPopup;
@@ -24,10 +25,10 @@ export const googleProvider = new firebase.auth.GoogleAuthProvider()
 export const githubProvider = new firebase.auth.GithubAuthProvider()
 
 export const loginWithProvider = provider => {
-  if(provider === 'google') {
+  if (provider === 'google') {
     return firebase.auth().signInWithPopup(googleProvider)
   }
-  else if(provider === 'github') {
+  else if (provider === 'github') {
     return firebase.auth().signInWithPopup(githubProvider)
   } else {
     return Promise.resolve()
@@ -35,7 +36,7 @@ export const loginWithProvider = provider => {
 }
 
 export const subscribe = (fn, noUserFn) => firebase.auth().onAuthStateChanged(user => {
-  if(user) {
+  if (user) {
     fn(user)
   } else {
     noUserFn && noUserFn();

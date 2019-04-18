@@ -40,27 +40,28 @@ class Header extends PureComponent {
       <header className={'headerStyles'}>
         <nav>
 
-        {isMobile ? <SideBar pageWrapId={'page-wrap'} /> : null}
+          {isMobile ? <SideBar pageWrapId={'page-wrap'} /> : null}
 
           <h1 className={'header'}>Q Bot</h1>
 
           {isMobile ? null : <ul className={'ulStyles'}>
-              <li><Link to="/questions" className={'links'}>Queue</Link></li>
-              <li><Link to="/leaderboard" className={'links'}>Leaderboard</Link></li>
-              <li className={'avatarWelcome'}>
-                <img src={profileImg ? profileImg : null} alt="avatar" className={'avatar'} />
-                <p className={'welcome'}>
-                  Welcome, {trimmedName}!
+            <li><Link to="/questions" className={'links'}>Queue</Link></li>
+            <li><Link to="/student-leaderboard" className={'links'}>Student Leaderboard</Link></li>
+            <li><Link to="/leaderboard" className={'links'}>Leaderboard</Link></li>
+            <li className={'avatarWelcome'}>
+              <img src={profileImg ? profileImg : null} alt="avatar" className={'avatar'} />
+              <p className={'welcome'}>
+                Welcome, {trimmedName}!
                 </p>
-              </li>
-              <li>
-                <button name='signout' value='signout'
-                  onClick={this.handleSignOut} className={'logout'}
-                >
-                  Sign Out
+            </li>
+            <li>
+              <button name='signout' value='signout'
+                onClick={this.handleSignOut} className={'logout'}
+              >
+                Sign Out
                 </button>
-              </li>
-            </ul>
+            </li>
+          </ul>
           }
 
         </nav>

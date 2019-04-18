@@ -11,7 +11,7 @@ export default class LeaderBoard extends PureComponent {
     deleteTA(id);
   }
 
-  getTAs = () => {	
+  getTAs = () => {
     return taCollection.get().then(snap => {
       return snap.docs.map(doc => {
         return console.log(doc.data().name || 'User')
@@ -35,9 +35,8 @@ export default class LeaderBoard extends PureComponent {
   render() {
     return (
       <>
-        <Header/>
-        <TAList 
-          handleDelete={this.handleDelete} 
+        <TAList
+          handleDelete={this.handleDelete}
         />
       </>
     );
