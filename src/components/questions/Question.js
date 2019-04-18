@@ -6,7 +6,6 @@ moment().format();
 export default function Question({ questionObj, handleClick }) {
   const { id, name, question, TA, timestamp, solved = false } = questionObj;
   const date = timestamp.toDate();
-  // the following string is the Slack Bot user ID to replace:
   const quest = question.replace(/^<@UHEMKNNPP>/g, '');
 
   let end = moment(date);

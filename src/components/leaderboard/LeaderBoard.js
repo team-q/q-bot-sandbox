@@ -1,10 +1,9 @@
 import React, { PureComponent } from 'react';
-import { addTA, deleteTA } from '../../actions/TA';
+import { deleteTA } from '../../actions/TA';
 import { taCollection, questionCollection } from '../../services/firebase'
 
 import './LeaderBoard.scss';
 import TAList from './TAList';
-import Header from '../layout/Header';
 
 export default class LeaderBoard extends PureComponent {
   handleDelete = (id) => {
