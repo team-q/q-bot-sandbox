@@ -34,7 +34,7 @@ class Header extends PureComponent {
     const space = profileNameSpace && profileName.indexOf(' ');
     const trimmedName = profileNameSpace ? profileName.slice(0, space) : 'User';
     const { width } = this.state;
-    const isMobile = width <= 667;
+    const isMobile = width <= 1000;
 
     return (
       <header className={'headerStyles'}>
@@ -47,7 +47,7 @@ class Header extends PureComponent {
           {isMobile ? null : <ul className={'ulStyles'}>
             <li><Link to="/questions" className={'links'}>Queue</Link></li>
             <li><Link to="/student-leaderboard" className={'links'}>Student Leaderboard</Link></li>
-            <li><Link to="/leaderboard" className={'links'}>Leaderboard</Link></li>
+            <li><Link to="/leaderboard" className={'links'}>TA Leaderboard</Link></li>
             <li className={'avatarWelcome'}>
               <img src={profileImg ? profileImg : null} alt="avatar" className={'avatar'} />
               <p className={'welcome'}>
