@@ -2,6 +2,8 @@ import React from 'react';
 import { solvedCollection } from '../../../services/firebase';
 import { useFirestore } from '../../connectFirestore';
 
+import './StudentLeaderBoard.scss';
+
 export default function StudentLeaderBoard() {
   const questions = useFirestore(solvedCollection, []);
   console.log(questions)
@@ -18,9 +20,11 @@ export default function StudentLeaderBoard() {
       return b[1] - a[1];
     })
   return (
-    <table>
-      <thead className={'qBotTable'}>
-        <tr>
+    <>
+    <h1 className={'center-align'}>Student Leader Board</h1>
+    <table className={'leaderTable studentTable'}>
+      <thead>
+        <tr className={'tableRow'}>
           <th className={'tableHeader'}>Student</th>
           <th className={'tableHeader'}>Count</th>
         </tr>
@@ -29,10 +33,11 @@ export default function StudentLeaderBoard() {
         {sorted.map(student => (
           <tr className={'tableRow'}>
             <td className={'tableData'}>{student[0]}</td>
-            <td className={'tableData'}>{student[1]}</td>
+            <td className={'tableData center-align'}>{student[1]}</td>
           </tr>
         ))}
       </tbody>
     </table>
+    </>
   )
 }
