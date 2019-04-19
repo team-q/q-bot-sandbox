@@ -84,3 +84,37 @@ Note: Beware of modifying this element as it can break the animations - you shou
 	font-size: 2em;
 	width: 100%;
 }
+
+h1.bm-item.sidebarTitle {
+	margin-bottom: 2.5rem;
+}
+
+@media screen and (max-width: 1000px) {
+	.logout {
+		margin-bottom: 2rem !important;
+	}
+}
+
+.user-component .userDiv {
+	align-items: center;
+
+	@media (orientation: landscape) {
+		display: flex;
+
+		.welcome-text {
+			padding-left: 0.5rem !important;
+		}
+	}
+
+	img.avatar {
+		width: 2em;
+		height: 2em;
+	}
+
+	.welcome-text {
+		color: white;
+		text-align: left !important;
+		padding: 0;
+		display: block;
+	}
+}
