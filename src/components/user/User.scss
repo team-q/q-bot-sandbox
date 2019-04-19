@@ -1,0 +1,19 @@
+//colors
+$color_sapphire: #39499b;
+$color_storm_dust: #666666;
+
+//imports
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+//fonts
+$font_1: Roboto;
+
+.userDiv {
+  .welcome-text {
+    margin: 0;
+    text-align: center;
+    display: inline-block;
+    font-family: $font_1;
+    font-size: .85em;
+  }
+}
