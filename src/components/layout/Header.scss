@@ -38,9 +38,17 @@ $font_1: Roboto;
 	display: inline-block;
 	font-family: $font_1;
 }
-p.welcome {
-	margin: 0;
+
+li .userDiv {
+  display: flex;
+  flex-direction: column;
+	align-items: center;
 }
+
+.avatarWelcome.user div p {
+	color: $color_storm_dust;
+}
+
 .links {
 	font-family: $font_1;
 	text-decoration: none;
