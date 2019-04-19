@@ -16,7 +16,7 @@ export default function TAList({ handleDelete }) {
 
   return (
     <>
-      <h1>TA Leader Board</h1>
+      <h1 className={'center-align'}>TA Leader Board</h1>
       <table className={'leaderTable'}>
         <thead>
           <tr>
