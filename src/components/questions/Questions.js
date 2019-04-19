@@ -6,7 +6,6 @@ import FilterForm from './FilterForm';
 import SortForm from './SortForm';
 import CohortSort from '../CohortSort';
 import ClaimSort from '../ClaimSort';
-import Header from '../layout/Header';
 
 const filterClaimed = {
   claimed(TA) {
