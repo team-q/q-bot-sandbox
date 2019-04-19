@@ -2,18 +2,17 @@
 
 exports[`Questions matches a snapshot 1`] = `
 <Fragment>
-  <FilterForm
-    onChange={[Function]}
-    value=""
+  <h1
+    className="center-align"
+  >
+    Queue
+  </h1>
+  <ToggleContent
+    content={[Function]}
+    toggle={[Function]}
   />
-  <SortForm
-    handleChange={[Function]}
-  />
-  <CohortSort
-    onChange={[Function]}
-  />
-  <ClaimSort
-    onChange={[Function]}
+  <div
+    id="modal-root"
   />
   <QuestionsList
     providerData="TA Name"

@@ -2,21 +2,16 @@
 
 exports[`FilterForm matches a snapshot 1`] = `
 <Fragment>
-  <h2
-    className="addFilterHeader"
-  >
-    Filter & Sort 
-  </h2>
   <label
     className="questionLabel"
   >
-    Question:
+    By Question:
+    <input
+      name="searchTerm"
+      onChange={[MockFunction]}
+      type="text"
+      value="TA"
+    />
   </label>
-  <input
-    name="searchTerm"
-    onChange={[MockFunction]}
-    type="text"
-    value="TA"
-  />
 </Fragment>
 `;
