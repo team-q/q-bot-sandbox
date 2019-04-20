@@ -53,11 +53,54 @@ h1 {
 
 button, select {
 	font-family: $font_2, $font_1;
+	background-color: white;
+}
+
+button.toggle-button {
+	margin-bottom: 2em;
+	padding: 5px 15px;
+	border: 2px solid $color_celeste;
+	margin-left: 10px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+section {
+	display: flex;
+	justify-content: space-around;
+	margin-bottom: 1em;
+
+	select {
+		display: block;
+	}
+
+	input[type=text] {
+		display: block;
+		min-width: 15.5em;
+	}
+
+	fieldset {
+		border: 1px solid $color_celeste;
+		min-width: 41%;
+	}
+
+	p {
+		margin: 0;
+		padding: 0;
+	}
+
+	legend {
+		font-weight: bold;
+		text-indent: 0;
+		margin-bottom: 1em;
+	}
+
+	button.filter {
+		margin-top: 1em;
+	}
 }
 
 .qBotTable {
-	margin: 1em 0;
-	margin-top: 2em;
 	width: 100%;
 	overflow: hidden;
 	background: $white;
@@ -162,9 +205,7 @@ button, select {
 	margin-left: 10px;
 	cursor: pointer;
 	border-radius: 5px;
-	float: right;
 }
-
 
 //mobile styling
 @media(max-width: 480px) {
@@ -176,31 +217,22 @@ button, select {
 		display: none !important;
 	}
 
-	.sortLabel {
-		margin-left: 1em;
-		display: inline-block;
-	}
-
-	select {
-		margin-left: 2em;
+	input[type=text] {
+		width: 95%;
 	}
 
 	label {
 		margin-bottom: 1em;
 	}
 
-	.claimedStatus {
-		display: none !important;
+	.filter-and-sort {
+		display: block;
 	}
 
 	.cohortSort  {
 		display: inline-block;
-		margin-left: 1em;
 	}
 
-	.questionLabel {
-		margin: 0 1em;
-	}
 }
 
 @media(min-width: 480px) {

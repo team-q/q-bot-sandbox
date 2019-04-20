@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu';
 import { signOut } from '../../services/firebase';
 import './SideBar.scss';
+import User from '../user/User';
 
 export default class SideBar extends React.Component {
   state = {
@@ -36,11 +37,23 @@ export default class SideBar extends React.Component {
           </Link>
           <br/>
           <br/>
+          <Link className={'menu-item'} to='/student-leaderboard' 
+            onClick={() => this.closeMenu()}
+          >
+            Student Leader Board
+          </Link>
+          <br/>
+          <br/>
           <Link className={'menu-item'} to='/leaderboard' 
             onClick={() => this.closeMenu()}
           >
-            Leaderboard
+            TA Leader Board
           </Link>
+          <br/>
+          <br/>
+          <div className={'user-component'}>
+            <User/>
+          </div>
           <br/>
           <br/>
           <button name='signout' value='signout'

@@ -31,7 +31,6 @@ export default function QuestionsList({ questions, providerData }) {
       {questions === null && <h1>Loading...</h1>}
       {questions &&
         <>
-          <h1>TA Queue</h1>
           <table className={'qBotTable'}>
             <thead>
               <tr>

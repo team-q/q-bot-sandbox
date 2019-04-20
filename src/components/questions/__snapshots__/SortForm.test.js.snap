@@ -5,23 +5,23 @@ exports[`SortForm matches a snapshot 1`] = `
   <label
     className="sortLabel"
   >
-    Sort By Time:
+    By Time:
+    <select
+      onChange={[MockFunction]}
+    >
+      <option
+        name="desc"
+        value="desc"
+      >
+        Descending
+      </option>
+      <option
+        name="asc"
+        value="asc"
+      >
+        Ascending
+      </option>
+    </select>
   </label>
-  <select
-    onChange={[MockFunction]}
-  >
-    <option
-      name="desc"
-      value="desc"
-    >
-      Descending
-    </option>
-    <option
-      name="asc"
-      value="asc"
-    >
-      Ascending
-    </option>
-  </select>
 </Fragment>
 `;

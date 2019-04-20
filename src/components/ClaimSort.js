@@ -3,7 +3,7 @@ import React from 'react';
 export default function ClaimSort({ selectedValue, onChange }) {
   return (
     <label className={'claimedStatus'}>
-      Sort By Claimed Status:
+      By Claimed Status:
       <select onChange={onChange} defaultValue={selectedValue}>
         <option value='both'>All</option>
         <option value='claimed'>Claimed</option>

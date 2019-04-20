@@ -2,7 +2,9 @@
 
 exports[`TAList matches a snapshot 1`] = `
 <Fragment>
-  <h1>
+  <h1
+    className="center-align"
+  >
     TA Leader Board
   </h1>
   <table

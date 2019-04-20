@@ -6,7 +6,6 @@ import './StudentLeaderBoard.scss';
 
 export default function StudentLeaderBoard() {
   const questions = useFirestore(solvedCollection, []);
-  console.log(questions)
 
   const counts = questions
     .reduce((acc, question) => {
@@ -30,8 +29,8 @@ export default function StudentLeaderBoard() {
         </tr>
       </thead>
       <tbody>
-        {sorted.map(student => (
-          <tr className={'tableRow'}>
+        {sorted.map((student, idx) => (
+          <tr className={'tableRow'} key={idx}>
             <td className={'tableData'}>{student[0]}</td>
             <td className={'tableData center-align'}>{student[1]}</td>
           </tr>
