@@ -1,18 +1,6 @@
 const request = require('superagent');
 
-const functions = require('firebase-functions');
-
-const respond = async (channelId, message, threadId) => {
-  const { body } = await request
-    .get(`https://slack.com/api/conversations.info?token=${process.env.CHANNEL_TOKEN}&channel=${channelId}&pretty=1`);
-  const channelName = body.channel.name;
-  const hook = functions.config().hooks[channelName];
-  await request
-    .post(hook)
-    .set('Content-Type', 'application/json')
-    .send({ text: message, thread_ts: threadId })
-  return channelName;
-}
+const respond = require('./respond');
 
 exports.processQuestionHandler = admin => async (snap, context) => {
   const { slackId, messageId, channelId, threadId } = snap.data();
@@ -37,6 +25,7 @@ exports.processQuestionHandler = admin => async (snap, context) => {
     .doc(context.params.id)
     .update({
       name: body.user.real_name,
+      userId: body.user.id,
       channelName
     });
 }
