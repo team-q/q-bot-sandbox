@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 
-import { signOut, auth } from '../../services/firebase';
+import { signOut } from '../../services/firebase';
 import { withUser } from '../withUser';
 import SideBar from './SideBar';
 import './Header.scss';
+import User from '../user/User';
 
 class Header extends PureComponent {
   state = {
@@ -28,13 +29,8 @@ class Header extends PureComponent {
   }
 
   render() {
-    const profileImg = auth.currentUser.providerData[0].photoURL;
-    const profileName = auth.currentUser.providerData[0].displayName;
-    const profileNameSpace = profileName !== null && profileName.includes(' ');
-    const space = profileNameSpace && profileName.indexOf(' ');
-    const trimmedName = profileNameSpace ? profileName.slice(0, space) : 'User';
     const { width } = this.state;
-    const isMobile = width <= 667;
+    const isMobile = width <= 1000;
 
     return (
       <header className={'headerStyles'}>
@@ -46,13 +42,10 @@ class Header extends PureComponent {
 
           {isMobile ? null : <ul className={'ulStyles'}>
             <li><Link to="/questions" className={'links'}>Queue</Link></li>
-            <li><Link to="/student-leaderboard" className={'links'}>Student Leaderboard</Link></li>
-            <li><Link to="/leaderboard" className={'links'}>Leaderboard</Link></li>
-            <li className={'avatarWelcome'}>
-              <img src={profileImg ? profileImg : null} alt="avatar" className={'avatar'} />
-              <p className={'welcome'}>
-                Welcome, {trimmedName}!
-                </p>
+            <li><Link to="/student-leaderboard" className={'links'}>Student Leader Board</Link></li>
+            <li><Link to="/leaderboard" className={'links'}>TA Leader Board</Link></li>
+            <li className={'avatarWelcome user'}>
+              <User/>
             </li>
             <li>
               <button name='signout' value='signout'
