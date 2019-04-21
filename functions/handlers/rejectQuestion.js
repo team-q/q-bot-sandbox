@@ -10,7 +10,6 @@ module.exports = admin => (snap, context) => {
       .create(snap.after.data())
       .then(() => snap.after.ref.delete())
       .then(() => {
-        console.log('before', snap.before.data());
         const { channelId, userId, threadId } = snap.before.data();
         const message = `<@${userId}>, your question has been rejected. Please submit a more detailed question so a TA can better assist you.`;
         return respond(channelId, message, threadId)
