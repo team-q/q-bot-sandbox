@@ -4,7 +4,7 @@ const moment = require('moment');
 moment().format();
 
 export default function Question({ questionObj, handleClick }) {
-  const { id, name, question, TA, timestamp, solved = false } = questionObj;
+  const { id, name, question, TA, timestamp, solved = false, rejected = false } = questionObj;
   const date = timestamp.toDate();
   const quest = question.replace(/^<@UHEMKNNPP>/g, '');
 
@@ -16,7 +16,11 @@ export default function Question({ questionObj, handleClick }) {
       <td className={'tableData'}>{name}</td>
       <td className={'tableData'}>
         {quest}
-        <button onClick={() => rejectQuestion(true, id)}>X</button>
+        <input type="checkbox" 
+          name="rejectedValue" 
+          checked={rejected}
+          value={rejected}
+          onChange={({ target }) => rejectQuestion(target.checked, id)} />
       </td>
       <td className={'tableData'}>
         <p>{date.toLocaleString().split(',').join('')}</p> 

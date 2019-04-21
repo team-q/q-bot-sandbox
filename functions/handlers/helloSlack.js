@@ -8,7 +8,8 @@ exports.helloSlackHandler = admin => (request, response) => {
     threadId: request.body.event.ts,
     channelId: request.body.event.channel,
     channelName: '',
-    solved: false
+    solved: false,
+    rejected: false
   })
     .then(() => response.status(200).send(request.body))
 }
