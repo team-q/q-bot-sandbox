@@ -32,6 +32,7 @@ exports.processQuestionHandler = admin => async (snap, context) => {
   const { body } = await request.get(`https://slack.com/api/users.info?token=${process.env.CHANNEL_TOKEN}&user=${slackId}&pretty=1`);
   const channelName = await respond(channelId, 'Your question has been added to the queue!', threadId);
 
+
   return admin.firestore().collection('question')
     .doc(context.params.id)
     .update({

@@ -1,43 +1,36 @@
 import React from 'react';
-import { solvedCollection } from '../../../services/firebase';
+import { studentsCollection } from '../../../services/firebase';
 import { useFirestore } from '../../connectFirestore';
 
 import './StudentLeaderBoard.scss';
 
 export default function StudentLeaderBoard() {
-  const questions = useFirestore(solvedCollection, []);
-  console.log(questions)
+  const students = useFirestore(studentsCollection, []);
+  students.sort((a, b) => {
+    return b.count - a.count;
+  });
 
-  const counts = questions
-    .reduce((acc, question) => {
-      const personCount = acc[question.name] || 0;
-      return { ...acc, [question.name]: personCount + 1 }
-    }, {})
+  console.log(students)
 
-  const sorted = Object.keys(counts)
-    .map(name => ([name, counts[name]]))
-    .sort((a, b) => {
-      return b[1] - a[1];
-    })
   return (
     <>
-    <h1 className={'center-align'}>Student Leader Board</h1>
-    <table className={'leaderTable studentTable'}>
-      <thead>
-        <tr className={'tableRow'}>
-          <th className={'tableHeader'}>Student</th>
-          <th className={'tableHeader'}>Count</th>
-        </tr>
-      </thead>
-      <tbody>
-        {sorted.map(student => (
+      <h1 className={'center-align'}>Student Leader Board</h1>
+      <table className={'leaderTable studentTable'}>
+        <thead>
           <tr className={'tableRow'}>
-            <td className={'tableData'}>{student[0]}</td>
-            <td className={'tableData center-align'}>{student[1]}</td>
+            <th className={'tableHeader'}>Student</th>
+            <th className={'tableHeader'}>Count</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {students.map(student => (
+            <tr className={'tableRow'}>
+              <td className={'tableData'}>{student.name}</td>
+              <td className={'tableData center-align'}>{student.count}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </>
   )
 }
