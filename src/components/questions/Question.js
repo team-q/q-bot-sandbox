@@ -15,8 +15,9 @@ export default function Question({ questionObj, handleClick }) {
     <tr key={id} className={solved === true ? 'tableRow solvedTrue' : 'tableRow'}>
       <td className={'tableData'}>{name}</td>
       <td className={'tableData'}>
-        {quest}
-        <input type="checkbox" 
+        {quest}<br /><br />
+        <b>REJECT:</b> 
+        <input type="checkbox"
           name="rejectedValue" 
           checked={rejected}
           value={rejected}
