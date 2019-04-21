@@ -12,3 +12,4 @@ export const addClaim = (ta, id) => {
     })
 }
 export const addSolved = (solvedValue, id) => questionCollection.doc(id).update({ solved: solvedValue });
+export const rejectQuestion = (rejectedValue, id) => questionCollection.doc(id).update({ rejected: rejectedValue });

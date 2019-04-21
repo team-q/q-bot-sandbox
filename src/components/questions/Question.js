@@ -1,5 +1,5 @@
 import React from 'react';
-import { addSolved } from '../../actions/questions';
+import { addSolved, rejectQuestion } from '../../actions/questions';
 const moment = require('moment');
 moment().format();
 
@@ -14,8 +14,14 @@ export default function Question({ questionObj, handleClick }) {
   return (
     <tr key={id} className={solved === true ? 'tableRow solvedTrue' : 'tableRow'}>
       <td className={'tableData'}>{name}</td>
-      <td className={'tableData'}>{quest}</td>
-      <td className={'tableData'}><p>{date.toLocaleString().split(',').join('')}</p> <span className={(TA !== undefined ? 'Solved' : '')}>Waiting: {waitTime}</span></td>
+      <td className={'tableData'}>
+        {quest}
+        <button onClick={() => rejectQuestion(true, id)}>X</button>
+      </td>
+      <td className={'tableData'}>
+        <p>{date.toLocaleString().split(',').join('')}</p> 
+        <span className={(TA !== undefined ? 'Solved' : '')}>Waiting: {waitTime}</span>
+      </td>
       <td className={'tableData'}>
         {TA}
         <button
