@@ -10,9 +10,9 @@ module.exports = admin => (snap, context) => {
       .create(snap.after.data())
       .then(() => snap.after.ref.delete())
       .then(() => {
-        console.log('after', snap.before.data());
-        const { channelId, slackHandle, threadId } = snap.before.data();
-        const message = `@${slackHandle}, your question has been rejected!`;
+        console.log('before', snap.before.data());
+        const { channelId, userId, threadId } = snap.before.data();
+        const message = `<@${userId}>, your question has been rejected. Please submit a more detailed question so a TA can better assist you.`;
         return respond(channelId, message, threadId)
       })
   }

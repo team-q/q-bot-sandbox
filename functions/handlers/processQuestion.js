@@ -24,7 +24,7 @@ exports.processQuestionHandler = admin => async (snap, context) => {
     .doc(context.params.id)
     .update({
       name: body.user.real_name,
-      slackHandle: body.user.name,
+      userId: body.user.id,
       channelName
     });
 }
