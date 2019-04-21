@@ -18,6 +18,7 @@ export const questionCollection = firestore.collection('question')
 export const taCollection = firestore.collection('TA')
 export const cohortCollection = firestore.collection('cohort')
 export const solvedCollection = firestore.collection('solved')
+export const studentsCollection = firestore.collection('students')
 
 export const auth = app.auth();
 export const loginMethod = auth.signInWithPopup;
