@@ -16,12 +16,12 @@ export default function Question({ questionObj, handleClick }) {
       <td className={'tableData'}>{name}</td>
       <td className={'tableData'}>
         {quest}<br /><br />
-        <b>REJECT:</b> 
-        <input type="checkbox"
-          name="rejectedValue" 
-          checked={rejected}
+        <button 
           value={rejected}
-          onChange={({ target }) => rejectQuestion(target.checked, id)} />
+          name="rejectedValue"
+          onClick={() => rejectQuestion(true, id)}>
+          Request Refactor
+        </button>
       </td>
       <td className={'tableData'}>
         <p>{date.toLocaleString().split(',').join('')}</p> 
