@@ -11,7 +11,7 @@ module.exports = admin => (snap, context) => {
       .then(() => snap.after.ref.delete())
       .then(() => {
         const { channelId, userId, threadId } = snap.before.data();
-        const message = `<@${userId}>, your question has been rejected. Please submit a more detailed question so a TA can better assist you.`;
+        const message = `<@${userId}>, looks like we need more information to better assist you. Please refactor your question and resubmit for TA assistance.`;
         return respond(channelId, message, threadId)
       })
   }
