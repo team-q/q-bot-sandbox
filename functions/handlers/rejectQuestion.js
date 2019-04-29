@@ -13,6 +13,7 @@ module.exports = admin => (snap, context) => {
         const { channelId, userId, threadId } = snap.before.data();
         const message = `<@${userId}>, looks like we need more information to better assist you. Please refactor your question and resubmit for TA assistance.`;
         return respond(channelId, message, threadId)
-      })
+      });
   }
 }
+
