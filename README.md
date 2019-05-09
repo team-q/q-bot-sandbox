@@ -2,7 +2,7 @@
 
 **Authors**: [Kristin Hortsch](https://github.com/kristinhortsch), [Paige Gorry](https://github.com/paigeegorry), [Aaron Dennis](https://github.com/AaronD87), [Cari Palazzolo](https://github.com/caripizza)
 
-**https://qbot.alchemycodelab.io**
+**https://qbot.alchemycodelab.io** 
 
 ## Overview
 For our final project in [Alchemy](https://www.alchemycodelab.com/) career track, we built a Slack bot that adds student questions to Cloud Firestore collections.
