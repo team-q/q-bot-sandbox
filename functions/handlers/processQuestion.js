@@ -17,15 +17,20 @@ exports.processQuestionHandler = admin => async (snap, context) => {
     return respond(channelId, 'Don\'t spam the queue!', threadId)
   }
 
-  const { body } = await request.get(`https://slack.com/api/users.info?token=${process.env.CHANNEL_TOKEN}&user=${slackId}&pretty=1`);
-  const channelName = await respond(channelId, 'Your question has been added to the queue!', threadId);
-
-
-  return admin.firestore().collection('question')
-    .doc(context.params.id)
-    .update({
-      name: body.user.real_name,
-      userId: body.user.id,
-      channelName
-    });
+  try {
+    const { body } = await request.get(`https://slack.com/api/users.info?token=${process.env.CHANNEL_TOKEN}&user=${slackId}&pretty=1`);
+    const channelName = await respond(channelId, 'Your question has been added to the queue!', threadId);
+  
+  
+    return admin.firestore().collection('question')
+      .doc(context.params.id)
+      .update({
+        name: body.user.real_name,
+        userId: body.user.id,
+        channelName
+      });
+  }
+  catch(err) {
+    console.log('error at process question ', err)
+  } 
 }
